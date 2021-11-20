@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS income_type CASCADE;
 CREATE TABLE income_type (
   id SERIAL PRIMARY KEY NOT NULL,
-  income_desc TEXT NOT NULL,
+  income_desc TEXT NOT NULL
 );
