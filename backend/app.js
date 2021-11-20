@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -36,6 +36,6 @@ app.get("/",(req, res) => {
 
 module.exports = app;
 
-app.listen(PORT,"0.0.0.0", () => {
-  console.log(`Example app listening on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Example app listening on port ${PORT}`);
+// });

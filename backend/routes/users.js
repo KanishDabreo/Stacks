@@ -1,5 +1,5 @@
 const express = require('express');
-const users = express.Router();
+const router = express.Router();
 
 //user dashboard
 // users.get('/', function (req, res, next) {
@@ -10,7 +10,7 @@ const users = express.Router();
 //   res.json({})
 
 module.exports = (db) => {
-router.get("/", (req, res) => {
+router.get("/:user_email", (req, res) => {
   db.query(`SELECT * FROM users;`)
   .then(data => {
     const users = data.rows;
