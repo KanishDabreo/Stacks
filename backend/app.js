@@ -30,9 +30,18 @@ const authenticateRouter = require("./routes/authenticate");
 // app.post("/api/login");
 // app.post("/api/register");
 
+app.use("/api/users", usersRouter);
+app.use("/api/expenses", expensesRouter);
+app.use("/api/incomes", incomesRouter);
+app.use("/api/categories", categoriesRouter);
+
 app.get("/",(req, res) => {
   res.send("hello world")
 })
+
+app.get('/test', function(req, res) {
+  res.send('test')
+});
 
 module.exports = app;
 
