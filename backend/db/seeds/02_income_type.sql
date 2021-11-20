@@ -1,11 +1,11 @@
-INSERT INTO income_type (id, income_desc)
+INSERT INTO income_type (income_desc)
 VALUES
-('Salary');
-('Freelance');
-('Commission');
-('Gift');
-('Interest');
-('Investment');
-('Pocket Money');
-('Pension');
-('Other');
+('Salary'),
+('Freelance'),
+('Commission'),
+('Gift'),
+('Interest'),
+('Investment'),
+('Pocket Money'),
+('Pension'),
+('Other')
