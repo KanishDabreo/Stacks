@@ -3,9 +3,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-const indexRouter = require("./routes/users");
-const usersRouter = require("./routes/users");
-
 const app = express();
 
 app.use(logger("dev"));
@@ -16,7 +13,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const usersRouter = require("./routes/users");
 const expensesRouter = require("./routes/expenses");
-const incomesRouter = require("./routes/imcomes");
+const incomesRouter = require("./routes/incomes");
 const categoriesRouter = require("./routes/categories");
 
 
