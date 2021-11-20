@@ -16,7 +16,6 @@ const expensesRouter = require("./routes/expenses");
 const incomesRouter = require("./routes/incomes");
 const categoriesRouter = require("./routes/categories");
 
-
 app.use("/api/users", usersRouter);
 app.use("/api/expenses", expensesRouter);
 app.use("/api/incomes", incomesRouter);
@@ -25,5 +24,9 @@ app.use("/api/categories", categoriesRouter);
 app.get("/api/authenticate");
 app.post("/api/login");
 app.post("/api/register");
+
+app.get('/test', function(req, res) {
+  res.send('test')
+});
 
 module.exports = app;
