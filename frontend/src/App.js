@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Register from './components/Register';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
+import AddExpenses from './components/AddExpenses';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/addexpenses" element={<AddExpenses />} />
       </Routes>
       <Navbar />
     </div>
