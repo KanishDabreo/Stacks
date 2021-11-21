@@ -1,0 +1,30 @@
+.homepage-logo {
+  height: 900px;
+  margin-left: 700px;
+  margin-top: 100px;
+  position: relative;
+}
+
+.optimize {
+  font-size: 150px;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 200px;
+  z-index: 999;
+}
+
+.your {
+  font-size: 150px;
+  position: absolute;
+  margin-top: 350px;
+  margin-left: 200px;
+  z-index: 999;
+}
+
+.spending {
+  font-size: 150px;
+  position: absolute;
+  margin-top: 500px;
+  margin-left: 200px;
+  z-index: 999;
+}
