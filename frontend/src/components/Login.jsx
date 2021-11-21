@@ -5,7 +5,7 @@ import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 
 export default function Login(props) {
   return (
-    <Container fluid="sm">
+    <Container className='main-content' fluid="sm">
       <Form>
         <FloatingLabel
           controlId="floatingInput"
