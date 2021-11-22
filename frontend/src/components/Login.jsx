@@ -7,20 +7,28 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+import axios from 'axios';
 
 
 const theme = createTheme();
 
 export default function Login(props) {
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword ] = useState("");
 
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const loginData = { email, password };
+    //alert(password);
+    console.log(loginData);
+    const loginURL = "http://localhost:8080/api/auth/login";
+    try {
+      const { data } = await axios.post(loginURL, loginData);
+      console.log(data);
+    } catch (error) {
+      console.log("error: =========", error );
+    }
   };
 
   return (
@@ -46,6 +54,8 @@ export default function Login(props) {
               id="email"
               label="Email Address"
               name="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               autoComplete="email"
               autoFocus
             />
@@ -54,11 +64,14 @@ export default function Login(props) {
               required
               fullWidth
               name="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               label="Password"
               type="password"
               id="password"
               autoComplete="current-password"
             />
+            jjjjj {email}
             <Button
               type="submit"
               fullWidth

@@ -3,10 +3,6 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "node-sass": "^6.0.1"
-=======
     "react-router-dom": "^6.0.2"
->>>>>>> 7766c9e8048d2f096f1072f926716653bb9c9fb4
   }
 }
