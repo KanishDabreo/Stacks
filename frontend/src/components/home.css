@@ -5,14 +5,15 @@
   position: relative;
 }
 
+/*
 .optimize {
   font-size: 150px;
   font-weight: bolder;
   position: absolute;
   margin-top: 200px;
   margin-left: 250px;
-  z-index: 999;
-  text-shadow: 5px 5px #bbbbbb;
+  z-index: 888;
+  text-shadow: 5px 10px #bbbbbb;
 } 
 
 .your {
@@ -21,8 +22,8 @@
   position: absolute;
   margin-top: 350px;
   margin-left: 250px;
-  z-index: 999;
-  text-shadow: 5px 5px #bbbbbb;
+  z-index: 888;
+  text-shadow: 5px 10px #bbbbbb;
 }
 
 .spending {
@@ -31,6 +32,29 @@
   position: absolute;
   margin-top: 500px;
   margin-left: 250px;
+  z-index: 888;
+  text-shadow: 5px 10px #bbbbbb;
+}
+*/
+
+.text-container {
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 250px;
   z-index: 999;
-  text-shadow: 5px 5px #bbbbbb;
+}
+
+.text-container h4 {
+  font-size: 150px;
+  font-weight: bolder;
+  text-shadow: 5px 10px #bbbbbb;
+  line-height: 135px;
+}
+
+.submit-button {
+  text-align: center;
+}
+
+.btn-lg {
+  height: 50px;
 }
