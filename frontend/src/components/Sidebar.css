@@ -19,16 +19,24 @@
   padding-left: 20px;
 }
 
-/* .sidebar_text:hover {
-  font-size: medium;
-  color: #0d0c3e;
-  color: white;
-} */
+.sidebar_menu-items {
+  width: 100%;
+}
 
 .sidebar_text {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding-left: 20px;
+  align-items: center;
+  padding-left: 10px;
   height: 60px;
+}
+
+.sidebar_text a:hover {
+  /* color: #0d0c3e; */
+  color: white;
+}
+
+span {
+  margin-left: 10px;
 }
