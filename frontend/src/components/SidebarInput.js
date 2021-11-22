@@ -28,4 +28,16 @@ export const SidebarInput = [
     icon: <FaHome/>,
     cName: 'sidebar_text'
   },
+  {
+    title: 'Home',
+    path: '/',
+    icon: <FaHome/>,
+    cName: 'sidebar_text'
+  },
+  {
+    title: 'Home',
+    path: '/',
+    icon: <FaHome/>,
+    cName: 'sidebar_text'
+  },
 ]

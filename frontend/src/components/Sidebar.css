@@ -1,4 +1,30 @@
 .sidebar {
-  background-color: #2dd577 
+  display: flex;
+  justify-content: flex-start;
+  align-items: left;
+  height:90px;
+  background-color: #2dd577;
 }
 
+.sidebar_menu {
+  margin: 40px;
+  font-size: small;
+  background: none;
+}
+
+.sidebar-col {
+  display: flex;
+  justify-content: left;
+  position: fixed;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: black;
+}
+
+.sidebar_text {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+  height: 60px;
+}
