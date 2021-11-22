@@ -1,66 +1,101 @@
-// import Button from 'react-bootstrap/Button';
-// import Container from 'react-bootstrap/Container';
-// import Form from 'react-bootstrap/Form';
-// import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-// export default function Register(props) {
-//   return (
-//     <Container className='register' fluid="sm">
-//       <Form>
-//   <div class="form-group row">
-//     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-//     <div class="col-sm-10">
-//       <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-//     </div>
-//   </div>
-//   <div class="form-group row">
-//     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-//     <div class="col-sm-10">
-//       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-//     </div>
-//   </div>
-//   <fieldset class="form-group">
-//     <div class="row">
-//       <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-//       <div class="col-sm-10">
-//         <div class="form-check">
-//           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-//           <label class="form-check-label" for="gridRadios1">
-//             First radio
-//           </label>
-//         </div>
-//         <div class="form-check">
-//           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-//           <label class="form-check-label" for="gridRadios2">
-//             Second radio
-//           </label>
-//         </div>
-//         <div class="form-check disabled">
-//           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-//           <label class="form-check-label" for="gridRadios3">
-//             Third disabled radio
-//           </label>
-//         </div>
-//       </div>
-//     </div>
-//   </fieldset>
-//   <div class="form-group row">
-//     <div class="col-sm-2">Checkbox</div>
-//     <div class="col-sm-10">
-//       <div class="form-check">
-//         <input class="form-check-input" type="checkbox" id="gridCheck1">
-//         <label class="form-check-label" for="gridCheck1">
-//           Example checkbox
-//         </label>
-//       </div>
-//     </div>
-//   </div>
-//   <div class="form-group row">
-//     <div class="col-sm-10">
-//       <button type="submit" class="btn btn-primary">Sign in</button>
-//     </div>
-//   </div>
-//       </Form>
-//     </Container>
-//   );
-// }
+
+const theme = createTheme();
+
+export default function Register(props) {
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Container className="main-content" component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Typography component="h1" variant="h5">
+            Register
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Name"
+              name="name"
+              autoComplete="name"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="confirmPassword"
+              label="Confirm Password"
+              type="confirmPassword"
+              id="confirmPassword"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Register
+            </Button>
+            <Grid container>
+              <Grid item>
+                <Link href="/login" variant="body2">
+                  {"Already have an account? Sign In"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
+  );
+}

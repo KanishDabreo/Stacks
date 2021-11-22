@@ -2,10 +2,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-<<<<<<< HEAD
 // import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
-=======
->>>>>>> 8ceed6479b4160d52bf2a074e881fdc5d2c9df9a
 import './addexpense.css';
 
 export default function AddExpenses(props) {
