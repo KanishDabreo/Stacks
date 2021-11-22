@@ -3,13 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
     "start": "node ./bin/www",
     "dev": "node app.js"
-=======
-    "start": "./node_modules/.bin/nodemon express_server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> b25c9c1b019539aee1017fae4d546001964cfa39
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
