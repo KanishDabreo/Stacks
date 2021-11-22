@@ -10,10 +10,7 @@
 .logo {
   width: 10rem;
 }
-.navbar {
-  display: flex;
 
-}
 .login_register {
   margin-right: 2rem;
   color: #0d0c3e!important;
@@ -32,3 +29,10 @@ li a:hover {
   color: black;
   text-decoration: underline;
 }
+
+.ml-auto {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+

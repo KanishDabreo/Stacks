@@ -6,7 +6,7 @@ import './addexpense.css';
 
 export default function AddExpenses(props) {
   return (
-    <div class="addexpense-page">
+    <div className="addexpense-page">
       <h4>Please enter your income: </h4>
       <div class="income-container">
         <Row className="mb-3">
@@ -56,7 +56,7 @@ export default function AddExpenses(props) {
             </Form.Group>
         </Row>
       </div>
-      <div class="submit-button">
+      <div className="submit-button">
         <Button variant="success" type="submit">Submit</Button>
       </div>
     </div>
