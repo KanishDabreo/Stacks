@@ -8,18 +8,25 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { useState } from 'react';
+import axios from 'axios'; 
 
 const theme = createTheme();
 
 export default function Register(props) {
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword ] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const registerData = {email, password};
+    console.log(data);
+    const registerURL = "http://localhost:8080/api/auth/register";
+    try {
+      const{ data } = await axios.post(registerURL, registerData)
+    } catch (error) {
+      console.log("error: =======", error )
+    }
   };
 
   return (
@@ -62,7 +69,10 @@ export default function Register(props) {
               margin="normal"
               required
               fullWidth
+              value={password}
+              onChange={(event)}
               name="password"
+
               label="Password"
               type="password"
               id="password"

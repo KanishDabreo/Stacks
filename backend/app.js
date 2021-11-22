@@ -20,15 +20,15 @@ const incomesRouter = require("./routes/incomes");
 const categoriesRouter = require("./routes/categories");
 const authenticateRouter = require("./routes/authenticate");
 
-// app.use("/api/users", usersRouter);
-// app.use("/api/expenses", expensesRouter);
-// app.use("/api/incomes", incomesRouter);
-// app.use("/api/categories", categoriesRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/expenses", expensesRouter);
+app.use("/api/incomes", incomesRouter);
+app.use("/api/categories", categoriesRouter);
 
-// app.use("/api/authenticate", authenticateRouter);
-// app.get("/api/authenticate");
-// app.post("/api/login");
-// app.post("/api/register");
+app.use("/api/authenticate", authenticateRouter);
+app.get("/api/authenticate");
+app.post("/api/login");
+app.post("/api/register");
 
 app.use("/api/users", usersRouter);
 app.use("/api/expenses", expensesRouter);
@@ -40,11 +40,10 @@ app.get("/",(req, res) => {
 })
 
 app.get('/test', function(req, res) {
-  res.send('test')
+  res.send('test....!')
 });
-
-module.exports = app;
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+module.exports = app;
