@@ -3,11 +3,13 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const cors = require("cors");
 
 const indexRouter = require("./routes/users");
 
 const app = express();
 
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,7 +27,7 @@ const authenticateRouter = require("./routes/authenticate");
 // app.use("/api/incomes", incomesRouter);
 // app.use("/api/categories", categoriesRouter);
 
-// app.use("/api/authenticate", authenticateRouter);
+app.use("/api/auth", authenticateRouter(app));
 // app.get("/api/authenticate");
 // app.post("/api/login");
 // app.post("/api/register");
@@ -43,8 +45,8 @@ app.get('/test', function(req, res) {
   res.send('test')
 });
 
-module.exports = app;
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+module.exports = app;
