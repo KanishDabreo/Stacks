@@ -20,10 +20,10 @@ export default function Register(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const registerData = {email, password};
-    console.log(data);
+    console.log(registerData);
     const registerURL = "http://localhost:8080/api/auth/register";
     try {
-      const{ data } = await axios.post(registerURL, registerData)
+      const{ registerData } = await axios.post(registerURL, registerData)
     } catch (error) {
       console.log("error: ++++++++", error )
     }
