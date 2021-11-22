@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import AddExpenses from './components/AddExpenses';
 import About from './components/About';
 import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       </Routes>
       <Navbar />
       <Sidebar />
+      <Footer/>
     </div>
   );
 }
