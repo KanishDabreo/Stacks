@@ -1,5 +1,5 @@
 import './home.css';
-import Button from 'react-bootstrap/Button';  
+import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home(props) {
