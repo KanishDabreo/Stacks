@@ -1,7 +1,7 @@
-// import * as AiIcons from 'react-icons/ai'
+import { AiFillPlusCircle } from 'react-icons/ai'
 // import * as IoIcons from 'react-icons/io'
 // import * as FaIcons from 'react-icons/fa'
-import { FaHome, FaChartPie } from "react-icons/fa";
+import { FaHome, FaChartPie, FaMap } from "react-icons/fa";
 
 export const SidebarInput = [
   {
@@ -17,15 +17,15 @@ export const SidebarInput = [
     cName: 'sidebar_text'
   },
   {
-    title: 'Home',
+    title: 'Map',
     path: '/',
-    icon: <FaHome/>,
+    icon: <FaMap/>,
     cName: 'sidebar_text'
   },
   {
-    title: 'Home',
+    title: 'Add',
     path: '/',
-    icon: <FaHome/>,
+    icon: <AiFillPlusCircle/>,
     cName: 'sidebar_text'
   },
   {
