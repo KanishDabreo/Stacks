@@ -1,12 +1,20 @@
 import './home.css';
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home(props) {
+  const navigate = useNavigate();
   return (
-    <div class="homepage">
-      <h4 class="optimize">Optimize</h4>
-      <h4 class="your">your</h4>
-      <h4 class="spending">spending.</h4>
-      <img class="homepage-logo" src="./static/images/homepage_logo.png"/>
+    <div className="homepage">
+      <div className="text-container">
+        <h4 className="optimize">Optimize</h4>
+        <h4 className="your">your</h4>
+        <h4 className="spending">spending.</h4>
+        <div className="submit-button">
+          <Button variant="success" type="submit" size="lg" style={{fontSize: '30px', fontWeight: 'bold'}} onClick={() => navigate('/register')}>Get Started »</Button>
+        </div>
+      </div>
+      <img className="homepage-logo" alt="money-cloud" src="./static/images/homepage_logo.png"/>
     </div>
   )
 }

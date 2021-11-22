@@ -1,7 +1,10 @@
+import './dashboard.css';
+
 export default function Dashboard(props) {
   return (
     <div>
-      <h1>Dashboard Page</h1>
+      {/* total income balance would be shown here in the dashboard. */}
+      <h1 className="dashboard-title">$1,000</h1>
     </div>
   )
 }

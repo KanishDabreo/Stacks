@@ -6,7 +6,10 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import AddExpenses from './components/AddExpenses';
-import Sidebar from './components/Sidebar';
+<<<<<<< HEAD
+=======
+import About from './components/About';
+>>>>>>> 8ceed6479b4160d52bf2a074e881fdc5d2c9df9a
 
 function App() {
   return (
@@ -17,6 +20,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/addexpenses" element={<AddExpenses />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Navbar />
       <Sidebar />

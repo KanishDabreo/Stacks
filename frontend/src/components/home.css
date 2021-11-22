@@ -5,29 +5,25 @@
   position: relative;
 }
 
-.optimize {
-  font-size: 150px;
-  font-weight: bolder;
+.text-container {
   position: absolute;
   margin-top: 200px;
   margin-left: 250px;
   z-index: 999;
 }
 
-.your {
-  font-size: 150px;
+.text-container h4 {
+  font-size: 110px;
   font-weight: bolder;
-  position: absolute;
-  margin-top: 350px;
-  margin-left: 250px;
-  z-index: 999;
+  text-shadow: 5px 10px #bbbbbb;
+  line-height: 115px;
 }
 
-.spending {
-  font-size: 150px;
-  font-weight: bolder;
-  position: absolute;
-  margin-top: 500px;
-  margin-left: 250px;
-  z-index: 999;
+.submit-button {
+  text-align: center;
+}
+
+.btn-lg {
+  height: 75px;
+  width:  495px;
 }
