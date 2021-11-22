@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import AddExpenses from './components/AddExpenses';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/addexpenses" element={<AddExpenses />} />
       </Routes>
       <Navbar />
+      <Sidebar />
     </div>
   );
 }

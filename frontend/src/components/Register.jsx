@@ -1,31 +1,66 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
+// import Button from 'react-bootstrap/Button';
+// import Container from 'react-bootstrap/Container';
+// import Form from 'react-bootstrap/Form';
+// import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 
-export default function Register(props) {
-  return (
-    <Container className='register' fluid="sm">
-      <Form>
-        <FloatingLabel controlId="floatingInput" label="Name">
-        <Form.Control type="Name" placeholder="Name" />
-        </FloatingLabel>
-
-        <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
-          <Form.Control type="email" placeholder="name@example.com" />
-        </FloatingLabel>
-
-        <FloatingLabel controlId="floatingPassword" label="Password">
-          <Form.Control type="password" placeholder="Password" />
-        </FloatingLabel>
-
-        <FloatingLabel controlId="floatingPassword" label="Confirm Password">
-          <Form.Control type="confirmPassword" placeholder="Confirm Password" />
-        </FloatingLabel>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </Container>
-  );
-}
+// export default function Register(props) {
+//   return (
+//     <Container className='register' fluid="sm">
+//       <Form>
+//   <div class="form-group row">
+//     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+//     <div class="col-sm-10">
+//       <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+//     </div>
+//   </div>
+//   <div class="form-group row">
+//     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+//     <div class="col-sm-10">
+//       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+//     </div>
+//   </div>
+//   <fieldset class="form-group">
+//     <div class="row">
+//       <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+//       <div class="col-sm-10">
+//         <div class="form-check">
+//           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+//           <label class="form-check-label" for="gridRadios1">
+//             First radio
+//           </label>
+//         </div>
+//         <div class="form-check">
+//           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+//           <label class="form-check-label" for="gridRadios2">
+//             Second radio
+//           </label>
+//         </div>
+//         <div class="form-check disabled">
+//           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+//           <label class="form-check-label" for="gridRadios3">
+//             Third disabled radio
+//           </label>
+//         </div>
+//       </div>
+//     </div>
+//   </fieldset>
+//   <div class="form-group row">
+//     <div class="col-sm-2">Checkbox</div>
+//     <div class="col-sm-10">
+//       <div class="form-check">
+//         <input class="form-check-input" type="checkbox" id="gridCheck1">
+//         <label class="form-check-label" for="gridCheck1">
+//           Example checkbox
+//         </label>
+//       </div>
+//     </div>
+//   </div>
+//   <div class="form-group row">
+//     <div class="col-sm-10">
+//       <button type="submit" class="btn btn-primary">Sign in</button>
+//     </div>
+//   </div>
+//       </Form>
+//     </Container>
+//   );
+// }
