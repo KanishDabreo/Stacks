@@ -25,6 +25,13 @@
 .sidebar_text {
   display: flex;
   justify-content: flex-start;
+  color:   ;
+  height: 60px;
+}
+
+.sidebar_text a {
+  display: flex;
+  justify-content: flex-start;
   padding: 20px;
   height: 60px;
 }
