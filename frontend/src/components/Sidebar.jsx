@@ -4,24 +4,28 @@ import React from 'react'
 import { FaHome, FaChartPie } from "react-icons/fa";
 
 import { Link } from 'react-router-dom'
+import { SidebarInput } from './SidebarInput';
 
-function Sidebar() {
+export default function Sidebar(props) {
   return (
     <div className="sidebar">
       <Link to="#" className="menu-bars">
       <FaHome/>
       <FaChartPie/>
       </Link>
+      <li>
+
+      </li>
+{SidebarInput.map((item, index)=>{
+return(
+  <li key={index} className={item.cName}>
+    <Link to={item.path}>
+    {item.icon}
+    <span>{item.title}</span>
+    </Link>
+  </li>
+)
+})}
     </div>
   )
-}
-
-export default Sidebar
-
-// export default function Sidebar(props) {
-//   return (
-//     <div>
-//       <h1>Sidebar</h1>
-//     </div>
-//   )
-// }
+};

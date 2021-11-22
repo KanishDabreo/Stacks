@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import AddExpenses from './components/AddExpenses';
 import About from './components/About';
+import Sidebar from './components/Sidebar';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
         <Route path="/about" element={<About />} />
       </Routes>
       <Navbar />
-      {/* <Sidebar /> */}
+      <Sidebar />
     </div>
   );
 }
