@@ -11,7 +11,7 @@ export default function Home(props) {
         <h4 className="your">your</h4>
         <h4 className="spending">spending.</h4>
         <div className="submit-button">
-          <Button variant="success" type="submit" size="lg" style={{fontSize: '30px', fontWeight: 'bold'}} onClick={() => navigate('/login')}>Get Started »</Button>
+          <Button variant="success" type="submit" size="lg" style={{fontSize: '30px', fontWeight: 'bold'}} onClick={() => navigate('/register')}>Get Started »</Button>
         </div>
       </div>
       <img className="homepage-logo" alt="money-cloud" src="./static/images/homepage_logo.png"/>
