@@ -5,11 +5,6 @@ const bcrypt = require('bcrypt');
 
 module.exports = () => {
 
-  const users = [{
-    "name": "Tonya",
-    "password": "test"
-  }];
-
   router.get('/users', (req, res) => {
     res.json(users);
   })

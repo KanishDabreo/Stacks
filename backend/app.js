@@ -8,6 +8,11 @@ const indexRouter = require("./routes/users");
 
 const app = express();
 
+// Connect db
+const { Pool } = require('pg');
+const dbParams = require('./pg');
+const db = new Pool(dbParams);
+
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
@@ -30,7 +35,7 @@ app.use("/api/auth", authenticateRouter);
 app.get("/api/auth");
 app.post("/api/login");
 app.post("/api/register");
-app.use("/api/auth", authenticateRouter(app));
+app.use("/api/auth", authenticateRouter(db));
 // app.get("/api/authenticate");
 // app.post("/api/login");
 // app.post("/api/register");
