@@ -13,16 +13,17 @@ import axios from 'axios';
 const theme = createTheme();
 
 export default function Register(props) {
+  const [ name, setName ] = useState("");
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const registerData = {email, password};
+    const registerData = {name, email, password};
     console.log(registerData);
     const registerURL = "http://localhost:8080/api/auth/register";
     try {
-      const{ registerData } = await axios.post(registerURL, registerData)
+      const{ data } = await axios.post(registerURL, registerData)
     } catch (error) {
       console.log("error: ++++++++", error )
     }
@@ -51,6 +52,8 @@ export default function Register(props) {
               id="name"
               label="Name"
               name="name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
               autoComplete="name"
               autoFocus
             />
