@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+const { Pool } = require('pg');
 
 const indexRouter = require("./routes/users");
 
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
+//routes
 const usersRouter = require("./routes/users");
 const expensesRouter = require("./routes/expenses");
 const incomesRouter = require("./routes/incomes");

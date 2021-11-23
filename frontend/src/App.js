@@ -9,6 +9,7 @@ import AddExpenses from './components/AddExpenses';
 import About from './components/About';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
+import Map from './components/Map';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/addexpenses" element={<AddExpenses />} />
         <Route path="/about" element={<About />} />
+        <Route path="/map" element={<Map />} />
       </Routes>
       <Navbar />
       <Sidebar />

@@ -2,16 +2,19 @@ const express = require('express');
 const router = express.Router();
 
 //user dashboard
+
 // users.get('/', function (req, res, next) {
 //   const users = [
 //     { name: "exampleUser", email: "exampleUser@gmail.com" }, { name: "user2", email: "user2@gmail.com" }
 //   ]
 
 //   res.json({})
+const routers = function (pool) {
 
-module.exports = (db) => {
-router.get("/:user_email", (req, res) => {
-  db.query(`SELECT * FROM users;`)
+router.get("/:email", function(req, res, next){
+  const queryOutput =`SELECT * FROM users;`
+  console.log(queryOutput);
+  return pool.query(queryOutput)
   .then(data => {
     const users = data.rows;
     res.json({ users });
@@ -24,3 +27,6 @@ router.get("/:user_email", (req, res) => {
 });
 return router;
 }
+
+//export 
+module.exports = { routers };

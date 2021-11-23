@@ -1,6 +1,5 @@
 import { AiFillPlusCircle } from 'react-icons/ai'
-// import * as IoIcons from 'react-icons/io'
-// import * as FaIcons from 'react-icons/fa'
+import{ IoMdPersonAdd } from 'react-icons/io';
 import { FaHome, FaChartPie, FaMap } from "react-icons/fa";
 
 export const SidebarInput = [
@@ -17,27 +16,21 @@ export const SidebarInput = [
     cName: 'sidebar_text'
   },
   {
-    title: 'Map',
-    path: '/',
-    icon: <FaMap/>,
-    cName: 'sidebar_text'
-  },
-  {
     title: 'Add',
     path: '/',
     icon: <AiFillPlusCircle/>,
     cName: 'sidebar_text'
   },
   {
-    title: 'Home',
-    path: '/',
-    icon: <FaHome/>,
+    title: 'Map',
+    path: '/map',
+    icon: <FaMap/>,
     cName: 'sidebar_text'
   },
   {
-    title: 'Home',
-    path: '/',
-    icon: <FaHome/>,
+    title: 'Register',
+    path: '/register',
+    icon: <IoMdPersonAdd/>,
     cName: 'sidebar_text'
   },
 ]
