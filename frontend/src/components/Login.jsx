@@ -20,12 +20,11 @@ export default function Login(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const loginData = { email, password };
-    //alert(password);
-    console.log(loginData);
+
     const loginURL = "http://localhost:8080/api/auth/login";
+
     try {
       const { data } = await axios.post(loginURL, loginData);
-      console.log(data);
     } catch (error) {
       console.log("error: =========", error );
     }
@@ -71,7 +70,6 @@ export default function Login(props) {
               id="password"
               autoComplete="current-password"
             />
-            jjjjj {email}
             <Button
               type="submit"
               fullWidth
