@@ -22,8 +22,8 @@ module.exports = (db) => {
     console.log(req.body);
     const {name, email, password, confirmPassword } = req.body;
       console.log(db);
-      let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4)`;
-      let queryParams = [name, email, password];
+      let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4) RETURNING *`;
+      let queryParams = [name, email, password, 'url'];
       return db
         .query(queryString, queryParams)
         .catch((err) => err);
