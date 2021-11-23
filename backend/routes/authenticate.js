@@ -3,11 +3,20 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 
 
-module.exports = () => {
+module.exports = (db) => {
 
-  router.get('/users', (req, res) => {
-    res.json(users);
-  })
+  router.get("/", (req, res) => {
+    db.query(`SELECT * FROM users;`)
+      .then(data => {
+        const users = data.rows;
+        res.json({ users });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
   router.post("/register", async (req, res) => {
     console.log(req.body);

@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Separated Routes for each Resource
 const usersRouter = require("./routes/users");
 const expensesRouter = require("./routes/expenses");
 const incomesRouter = require("./routes/incomes");
@@ -29,10 +30,10 @@ app.use("/api/users", usersRouter);
 app.use("/api/expenses", expensesRouter);
 app.use("/api/incomes", incomesRouter);
 app.use("/api/categories", categoriesRouter);
+app.use("/api/auth", authenticateRouter(db));
 
-app.use("/api/auth", authenticateRouter);
 
-
+// Test:
 app.get("/",(req, res) => {
   res.send("hello world")
 })
@@ -42,6 +43,6 @@ app.get('/test', function(req, res) {
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`Stacks app listening on port ${PORT}`);
 });
 module.exports = app;
