@@ -27,8 +27,8 @@ app.use("/api/expenses", expensesRouter);
 app.use("/api/incomes", incomesRouter);
 app.use("/api/categories", categoriesRouter);
 
-app.use("/api/authenticate", authenticateRouter);
-app.get("/api/authenticate");
+app.use("/api/auth", authenticateRouter);
+app.get("/api/auth");
 app.post("/api/login");
 app.post("/api/register");
 app.use("/api/auth", authenticateRouter(app));
