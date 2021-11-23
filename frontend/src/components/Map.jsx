@@ -4,7 +4,8 @@ import "./Map.css"
 export class MapContainer extends Map {
   constructor(props) {
     super(props);
-
+    
+//coordinates to map through for bank locations
     this.state = {
       stores: [{lat: 47.49855629475769, lng: -122.14184416996333},
               {latitude: 47.359423, longitude: -122.021071},
