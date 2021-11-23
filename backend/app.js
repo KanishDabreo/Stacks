@@ -4,7 +4,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
-const indexRouter = require("./routes/users");
 
 const app = express();
 
@@ -32,18 +31,6 @@ app.use("/api/incomes", incomesRouter);
 app.use("/api/categories", categoriesRouter);
 
 app.use("/api/auth", authenticateRouter);
-app.get("/api/auth");
-app.post("/api/login");
-app.post("/api/register");
-app.use("/api/auth", authenticateRouter(db));
-// app.get("/api/authenticate");
-// app.post("/api/login");
-// app.post("/api/register");
-
-app.use("/api/users", usersRouter);
-app.use("/api/expenses", expensesRouter);
-app.use("/api/incomes", incomesRouter);
-app.use("/api/categories", categoriesRouter);
 
 
 app.get("/",(req, res) => {
