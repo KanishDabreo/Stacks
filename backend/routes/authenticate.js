@@ -20,8 +20,13 @@ module.exports = (db) => {
 
   router.post("/register", async (req, res) => {
     console.log(req.body);
-    const { email, password, confirmPassword } = req.body;
-    // Check if password and confirm password is the same
+    const {name, email, password, confirmPassword } = req.body;
+      console.log(db);
+      let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4)`;
+      let queryParams = [name, email, password];
+      return db
+        .query(queryString, queryParams)
+        .catch((err) => err);
     if (password === confirmPassword) {
       // Check if user with the same email is already registered
       if (users.find(user => user.email === email)) {
