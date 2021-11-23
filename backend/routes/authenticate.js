@@ -21,7 +21,7 @@ module.exports = () => {
     if (password === confirmPassword) {
       // Check if user with the same email is already registered
       if (users.find(user => user.email === email)) {
-        res.send('User already registered.');
+        res.status(400).send('User already registered.'); //400 error
         return;       
       } else {
         try {
