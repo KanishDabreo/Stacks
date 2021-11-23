@@ -4,7 +4,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
-
 const indexRouter = require("./routes/users");
 
 const app = express();
@@ -40,6 +39,7 @@ app.use("/api/users", usersRouter);
 app.use("/api/expenses", expensesRouter);
 app.use("/api/incomes", incomesRouter);
 app.use("/api/categories", categoriesRouter);
+
 
 app.get("/",(req, res) => {
   res.send("hello world")
