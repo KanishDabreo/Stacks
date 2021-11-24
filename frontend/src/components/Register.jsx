@@ -97,8 +97,6 @@ export default function Register(props) {
               label="Confirm Password"
               type="password"
               id="confirmPassword"
-              value={confirmPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
               autoComplete="current-password"
             />
             <Button
