@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const cookieSession = require('cookie-session');
 
 module.exports = (db) => {
+
+  router.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2'],
+  }));
 
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
