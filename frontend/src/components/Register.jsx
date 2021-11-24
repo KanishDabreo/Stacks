@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const theme = createTheme();
@@ -17,15 +18,18 @@ export default function Register(props) {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
   const [ confirmPassword, setConfirmPassword ] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const registerData = {name, email, password, confirmPassword};
-    console.log(registerData);
+
+    const registerData = { name, email, password, confirmPassword };
     const registerURL = "http://localhost:8080/api/auth/register";
+
     try {
-      const{ data } = await axios.post(registerURL, registerData);
+      const { data } = await axios.post(registerURL, registerData);
       console.log(data);
+      navigate('/');
     } catch (error) {
       console.log("error: ++++++++", 'There already exists an account with this name or email');
     }
@@ -93,6 +97,8 @@ export default function Register(props) {
               label="Confirm Password"
               type="password"
               id="confirmPassword"
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
               autoComplete="current-password"
             />
             <Button
