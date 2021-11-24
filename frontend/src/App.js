@@ -9,7 +9,7 @@ import AddExpenses from './components/AddExpenses';
 import About from './components/About';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
-
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/addexpenses" element={<AddExpenses />} />
         <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <Navbar />
       <Sidebar />
