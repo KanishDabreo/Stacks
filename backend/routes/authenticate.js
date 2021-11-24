@@ -18,34 +18,27 @@ module.exports = (db) => {
   });
 
   router.post("/register", async (req, res) => {
-    console.log(req.body);
+
     const {name, email, password, confirmPassword } = req.body;
-    if(password !== confirmPassword) {
-      return res.status(400).send('Password does not match Confirmation Password');
+
+    if (password !== confirmPassword) {
+      res.send('Password confirmation does not match');
+      return;
+    } else {
+      try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4) RETURNING *`;
+        let queryParams = [name, email, hashedPassword, 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png'];
+
+        return db
+          .query(queryString, queryParams)
+          .catch((err) => err);
+      } catch (error) {
+        res.status(500).send();
+      }
     }
-    let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4) RETURNING *`;
-    let queryParams = [name, email, password, 'url'];
-    let queryCheckString = `SELECT COUNT(*) FROM users WHERE name = $1 OR email = $2`;
-    let queryCheckParams = [name, email];
-    let count = await db.query(queryCheckString, queryCheckParams)
-      .then((data) => {
-        return data.rows[0].count;
-      })
-      .catch((err) => {
-        return res.status(500).send(err);
-      });
-    if(count !== "0") {
-      return res.status(400).send('There already exists an account with this name or email');
-    }
-    db.query(queryString, queryParams)
-      .then(() => {
-        //const hashedPassword = await bcrypt.hash(password, 10);
-        return res.status(201).send('Account Created');
-      })
-      .catch((err) => {
-        return res.status(500).send(err);
-      });
-    });
+  }); 
 
   router.post("/login", async (req, res) => {
     console.log(req.body);
