@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
-
 module.exports = (db) => {
 
   router.get("/", (req, res) => {
@@ -21,32 +20,32 @@ module.exports = (db) => {
   router.post("/register", async (req, res) => {
     console.log(req.body);
     const {name, email, password, confirmPassword } = req.body;
-      console.log(db);
-      let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4) RETURNING *`;
-      let queryParams = [name, email, password, 'url'];
-      return db
-        .query(queryString, queryParams)
-        .catch((err) => err);
-    if (password === confirmPassword) {
-      // Check if user with the same email is already registered
-      if (users.find(user => user.email === email)) {
-        res.status(400).send('User already registered.'); //400 error
-        return;       
-      } else {
-        try {
-          const hashedPassword = await bcrypt.hash(password, 10);
-          const user = { email: email, password: hashedPassword };
-    
-          users.push(user);
-          res.status(201).send();
-        } catch (error) {
-          res.status(500).send();
-        }
-      }
-    } else {
-      res.send('Password does not match')
+    if(password !== confirmPassword) {
+      return res.status(400).send('Password does not match Confirmation Password');
     }
-  });
+    let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4) RETURNING *`;
+    let queryParams = [name, email, password, 'url'];
+    let queryCheckString = `SELECT COUNT(*) FROM users WHERE name = $1 OR email = $2`;
+    let queryCheckParams = [name, email];
+    let count = await db.query(queryCheckString, queryCheckParams)
+      .then((data) => {
+        return data.rows[0].count;
+      })
+      .catch((err) => {
+        return res.status(500).send(err);
+      });
+    if(count !== "0") {
+      return res.status(400).send('There already exists an account with this name or email');
+    }
+    db.query(queryString, queryParams)
+      .then(() => {
+        //const hashedPassword = await bcrypt.hash(password, 10);
+        return res.status(201).send('Account Created');
+      })
+      .catch((err) => {
+        return res.status(500).send(err);
+      });
+    });
 
   router.post("/login", async (req, res) => {
     console.log(req.body);

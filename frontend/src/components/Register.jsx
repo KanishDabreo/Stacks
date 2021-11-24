@@ -16,16 +16,18 @@ export default function Register(props) {
   const [ name, setName ] = useState("");
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
+  const [ confirmPassword, setConfirmPassword ] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const registerData = {name, email, password};
+    const registerData = {name, email, password, confirmPassword};
     console.log(registerData);
     const registerURL = "http://localhost:8080/api/auth/register";
     try {
-      const{ data } = await axios.post(registerURL, registerData)
+      const{ data } = await axios.post(registerURL, registerData);
+      console.log(data);
     } catch (error) {
-      console.log("error: ++++++++", error )
+      console.log("error: ++++++++", 'There already exists an account with this name or email');
     }
   };
 
@@ -86,6 +88,8 @@ export default function Register(props) {
               required
               fullWidth
               name="confirmPassword"
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
               label="Confirm Password"
               type="password"
               id="confirmPassword"
