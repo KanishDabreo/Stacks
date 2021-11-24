@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -16,6 +17,7 @@ const theme = createTheme();
 export default function Login(props) {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,6 +27,8 @@ export default function Login(props) {
 
     try {
       const { data } = await axios.post(loginURL, loginData);
+      console.log(data);
+      navigate('/');
     } catch (error) {
       console.log("error: =========", error );
     }
