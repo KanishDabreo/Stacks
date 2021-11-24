@@ -3,11 +3,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 // import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
-import './addexpense.css';
+import './expense.css';
 
-export default function AddExpenses(props) {
+export default function Expenses(props) {
   return (
-    <div className="addexpense-page">
+    <div className="expense-page">
       <h4>Please enter your income: </h4>
       <div class="income-container">
         <Row className="mb-3">
