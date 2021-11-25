@@ -22,21 +22,15 @@ module.exports = (db) => {
 
     const { name, email, password, confirmPassword } = req.body;
 
-    let errors = [];
-
-    if (!name || !email || !password || !confirmPassword) {
-      errors.push({ message: "Please, fill out all fields." });
-    }
-
     if (password !== confirmPassword) {
       errors.push({ message:'Passwords do not match.' });
       return;
     } else {
       try {  
         const hashedPassword = await bcrypt.hash(password, 10);
-
+        
         let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4) RETURNING *`;
-        let queryParams = [ name, email, password, 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png' ];
+        let queryParams = [ name, email, hashedPassword, 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png' ];
 
         return db
           .query(queryString, queryParams)
