@@ -23,21 +23,15 @@ export const SidebarInput = [
     cName: 'sidebar_text'
   },
   {
+    title: 'Income',
+    path: '/incomes',
+    icon: <iFillPlusCircle/>,
+    cName: 'sidebar_text'
+  },
+  {
     title: 'Add',
     path: '/',
     icon: <AiFillPlusCircle/>,
-    cName: 'sidebar_text'
-  },
-  {
-    title: 'Home',
-    path: '/',
-    icon: <FaHome/>,
-    cName: 'sidebar_text'
-  },
-  {
-    title: 'Home',
-    path: '/',
-    icon: <FaHome/>,
     cName: 'sidebar_text'
   },
 ]
