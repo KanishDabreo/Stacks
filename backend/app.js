@@ -27,7 +27,7 @@ const categoriesRouter = require("./routes/categories");
 const authenticateRouter = require("./routes/authenticate");
 
 app.use("/api/users", usersRouter);
-app.use("/api/expenses", expensesRouter);
+app.use("/api/expenses", expensesRouter(db));
 app.use("/api/incomes", incomesRouter);
 app.use("/api/categories", categoriesRouter);
 app.use("/api/auth", authenticateRouter(db));
