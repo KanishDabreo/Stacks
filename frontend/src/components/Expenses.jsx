@@ -5,9 +5,8 @@ import Button from 'react-bootstrap/Button';
 // import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 import './expense.css';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Doughnut } from 'react-chartjs-2'
 
 export default function Expenses(props) {
   const [ expAmt, setExpAmt ] = useState("");
