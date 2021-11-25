@@ -11,6 +11,7 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
 import Incomes from './components/Incomes';
+import './components/income.css'
 
 function App() {
   return (
