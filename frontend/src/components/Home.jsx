@@ -5,8 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export default function Home(props) {
   
   const {state} = useLocation()
-  const { name } = props;
-  console.log(name);
+  console.log(state);
 
   const navigate = useNavigate();
   return (

@@ -17,6 +17,8 @@ const theme = createTheme();
 export default function Login(props) {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
+  const [ user, setUser ] = useState("");
+  
   const navigate = useNavigate();
   const myRef = {};
 
@@ -29,7 +31,7 @@ export default function Login(props) {
     try {
       const { data } = await axios.post(loginURL, loginData);
       console.log("data from Login:", data);
-      navigate('/', { state: { name:data } });
+      navigate('/', { state: data } );
     } catch (error) {
       console.log("error: =========", error );
     }
