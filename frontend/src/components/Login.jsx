@@ -18,6 +18,7 @@ export default function Login(props) {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
   const navigate = useNavigate();
+  const myRef = {};
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,8 +28,8 @@ export default function Login(props) {
 
     try {
       const { data } = await axios.post(loginURL, loginData);
-      console.log(data);
-      navigate('/');
+      console.log("data from Login:", data);
+      navigate('/', { state: { name:data } });
     } catch (error) {
       console.log("error: =========", error );
     }
@@ -53,6 +54,7 @@ export default function Login(props) {
             <TextField
               margin="normal"
               required
+              inputRef={myRef}
               fullWidth
               id="email"
               label="Email Address"
@@ -65,6 +67,7 @@ export default function Login(props) {
             <TextField
               margin="normal"
               required
+              inputRef={myRef}
               fullWidth
               name="password"
               value={password}
@@ -79,6 +82,7 @@ export default function Login(props) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={() => {myRef.current.reportValidity()}}
             >
               Sign In
             </Button>

@@ -1,6 +1,12 @@
 import './dashboard.css';
+import { useLocation } from 'react-router-dom';
 
-export default function Dashboard(props) {
+export default function Dashboard() {
+
+  const {name} = useLocation();
+  console.log("test line");
+  console.log("data from dashboard:", name);
+
   return (
     <div>
       {/* total income balance would be shown here in the dashboard. */}

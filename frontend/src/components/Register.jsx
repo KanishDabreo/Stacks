@@ -1,3 +1,4 @@
+import React from "react";
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -19,6 +20,7 @@ export default function Register(props) {
   const [ password, setPassword ] = useState("");
   const [ confirmPassword, setConfirmPassword ] = useState("");
   const navigate = useNavigate();
+  const myRef = {};
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,7 +38,7 @@ export default function Register(props) {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider inputRef={myRef} theme={theme}>
       <Container className="main-content" component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -54,6 +56,7 @@ export default function Register(props) {
           <TextField
               margin="normal"
               required
+              inputRef={myRef}
               fullWidth
               id="name"
               label="Name"
@@ -66,6 +69,7 @@ export default function Register(props) {
             <TextField
               margin="normal"
               required
+              inputRef={myRef}
               fullWidth
               id="email"
               label="Email Address"
@@ -73,11 +77,11 @@ export default function Register(props) {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               autoComplete="email"
-              autoFocus
             />
             <TextField
               margin="normal"
               required
+              inputRef={myRef}
               fullWidth
               name="password"
               value={password}
@@ -90,6 +94,7 @@ export default function Register(props) {
             <TextField
               margin="normal"
               required
+              inputRef={myRef}
               fullWidth
               name="confirmPassword"
               value={confirmPassword}
@@ -106,6 +111,7 @@ export default function Register(props) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={() => {myRef.current.reportValidity()}}
             >
               Register
             </Button>
