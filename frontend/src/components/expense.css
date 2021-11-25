@@ -1,12 +1,13 @@
 .expense-page {
   margin-top: 125px;
-  margin-left: 100px;
+  margin-left: 180px;
 }
 
-.expense-container {
-  margin-top: 50px;
+/*this affects each row inside the expense-container*/
+.expense-container .col-sm-3 {
+  margin-top: 25px;
 }
 
 .submit-button {
-  margin-top: 50px;
+  margin-top: 13px;
 }

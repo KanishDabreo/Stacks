@@ -4,45 +4,50 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 // import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 import './expense.css';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Doughnut } from 'react-chartjs-2'
 
 export default function Expenses(props) {
+  const [ expAmt, setExpAmt ] = useState("");
+  const [ expType, setExpType ] = useState("");
+  const [ expDate, setExpDate ] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const expData = { expAmt, expType, expDate };
+    const expURL = "http://localhost:8080/api/expenses/";
+
+    setExpAmt("");
+    setExpType("");
+    setExpDate("");
+
+    try {
+      console.log(expData);
+      const { data } = await axios.post(expURL, expData);
+      console.log(data);
+      navigate('/expenses');
+    } catch (error) {
+      console.log("error: ++++++++", 'There already exists an account with this name or email');
+    }
+  };
+  
   return (
     <div className="expense-page">
-      <h4>Please enter your income: </h4>
-      <div class="income-container">
+      <div className="expense-container">
+      <h4>Please enter your expense details: </h4>
         <Row className="mb-3">
-          <Form.Group as={Col} sm={2} controlId="formGridCity">
-            <Form.Label>Amount</Form.Label>
-              <Form.Control type="text" placeholder="1000" />
-          </Form.Group>
-          <Form.Group as={Col} sm={2} controlId="formGridState">
-            <Form.Label>Type</Form.Label>
-            <Form.Select defaultValue="Choose...">
-              <option>Select ...</option>
-              <option value="1">Salary</option>
-              <option value="2">Freelance</option>
-              <option value="3">Commission</option>
-              <option value="4">Gift</option>
-              <option value="5">Interest</option>
-              <option value="6">Investment</option>
-              <option value="7">Pocket Money</option>
-              <option value="8">Pension</option>
-              <option value="9">Other</option>
-            </Form.Select>
-          </Form.Group>
-        </Row>
-      </div>
-      <div class="expense-container">
-      <h4>Please enter your expenses: </h4>
-        <Row className="mb-3">
-            <Form.Group as={Col} sm={2} controlId="formGridCity">
+            <Form.Group as={Col} sm={3} controlId="formGridCity">
               <Form.Label>Amount</Form.Label>
-                <Form.Control type="text" placeholder="1000" />
+                <Form.Control type="text" placeholder="ex. 1000" value={expAmt} onChange={(event) => setExpAmt(event.target.value)}/>
             </Form.Group>
-            <Form.Group as={Col} sm={2} controlId="formGridState">
+            <Form.Group as={Col} sm={3} controlId="formGridState" value={expType} onChange={(event) => setExpType(event.target.value)}>
               <Form.Label>Type</Form.Label>
               <Form.Select defaultValue="Choose...">
-                <option>Select ...</option>
+                <option>Select...</option>
                 <option value="1">Groceries</option>
                 <option value="2">Transportation</option>
                 <option value="3">Utility</option>
@@ -55,10 +60,12 @@ export default function Expenses(props) {
                 <option value="9">Other</option>
               </Form.Select>
             </Form.Group>
+            <Form.Group as={Col} sm={3} controlId="formGridCity">
+              <Form.Label>Date</Form.Label>
+              <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={expDate} onChange={(event) => setExpDate(event.target.value)}/>
+            </Form.Group>
         </Row>
-      </div>
-      <div className="submit-button">
-        <Button variant="success" type="submit">Submit</Button>
+        <Button className="submit-button" variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
       </div>
     </div>
   )
