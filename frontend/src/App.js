@@ -10,7 +10,6 @@ import About from './components/About';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
-import Incomes from './components/Incomes';
 
 function App() {
   return (
@@ -20,10 +19,9 @@ function App() {
         <Route path="/dashboard"  element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Expenses" element={<Expenses />} />
+        <Route path="/expenses" element={<Expenses />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/Incomes" element={<Incomes />} />
       </Routes>
       <Navbar />
       <Sidebar />
