@@ -24,7 +24,7 @@ function App() {
       </Routes>
       <Navbar />
       <Sidebar />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
