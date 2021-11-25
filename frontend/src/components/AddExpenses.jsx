@@ -4,10 +4,14 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 // import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 import './addexpense.css';
+import { getUser } from '../utils/userAuth';
 
 export default function AddExpenses(props) {
+  const user = getUser();
+
   return (
     <div className="addexpense-page">
+      <div>{user.name}</div>
       <h4>Please enter your income: </h4>
       <div class="income-container">
         <Row className="mb-3">

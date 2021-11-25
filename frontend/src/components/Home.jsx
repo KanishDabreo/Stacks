@@ -2,10 +2,7 @@ import './home.css';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-export default function Home(props) {
-  
-  const {state} = useLocation()
-  console.log(state);
+export default function Home() {
 
   const navigate = useNavigate();
   return (
