@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 // import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
-import './addexpense.css';
+import './expense.css';
 import { getUser } from '../utils/userAuth';
 
 export default function AddExpenses(props) {
