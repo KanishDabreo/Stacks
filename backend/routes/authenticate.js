@@ -1,14 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const cookieSession = require('cookie-session');
+
 
 module.exports = (db) => {
-
-  router.use(cookieSession({
-    name: 'session',
-    keys: ['key1', 'key2'],
-  }));
 
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
@@ -25,17 +20,17 @@ module.exports = (db) => {
 
   router.post("/register", async (req, res) => {
 
-    const {name, email, password, confirmPassword } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
 
     if (password !== confirmPassword) {
-      res.send('Password confirmation does not match');
+      errors.push({ message:'Passwords do not match.' });
       return;
     } else {
-      try {
+      try {  
         const hashedPassword = await bcrypt.hash(password, 10);
-
+        
         let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4) RETURNING *`;
-        let queryParams = [name, email, hashedPassword, 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png'];
+        let queryParams = [ name, email, hashedPassword, 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png' ];
 
         return db
           .query(queryString, queryParams)
@@ -48,22 +43,29 @@ module.exports = (db) => {
 
   router.post("/login", async (req, res) => {
     console.log(req.body);
-    const { email, password } = req.body;
-    const user = users.find(user => user.email == email);
 
-    // Check if user exists in DB
-    if (!user) {
-      return res.status(400).send('User does not exist');
-    }
-    try {
-      if (await bcrypt.compare(password, user.password)) {
-        res.send("Success");
-      } else {
-        res.send("Invalid username or password");
-      }
-    } catch (error) {
-      res.status(500).send();
-    }
+    const { email, password } = req.body;
+
+    db.query(`SELECT * FROM users WHERE email = $1;`, [email])
+    .then(async data => {
+      console.log(data.rows[0].password);
+      const user = data.rows[0];
+      // Check if user exists in DB        
+        if (!user) {
+          return res.status(400).send('User does not exist');
+        } else {
+          try {
+            if (await bcrypt.compare(password, user.password)) {
+              res.send(user);
+            } else {
+              res.send("Invalid username or password");
+            }
+          } catch (error) {
+            res.status(500).send();
+          }
+        }   
+      })
+
   });
 
   return router;

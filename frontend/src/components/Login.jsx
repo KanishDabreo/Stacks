@@ -12,11 +12,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-const theme = createTheme();
 
-export default function Login(props) {
+export default function Login() {
+  const theme = createTheme();
   const [ email, setEmail ] = useState("");
-  const [ password, setPassword ] = useState("");
+  const [ password, setPassword ] = useState("");  
+  
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -30,8 +31,9 @@ export default function Login(props) {
 
     try {
       const { data } = await axios.post(loginURL, loginData);
-      console.log(data);
-      navigate('/');
+      console.log("data from Login:", data);
+      localStorage.setItem('userSession', JSON.stringify(data));
+      navigate('/dashboard');
     } catch (error) {
       console.log("error: =========", error );
     }
@@ -82,6 +84,9 @@ export default function Login(props) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={
+              email.length === 0 ||
+              password.length === 0}
             >
               Sign In
             </Button>

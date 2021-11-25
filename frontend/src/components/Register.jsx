@@ -78,7 +78,6 @@ export default function Register(props) {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               autoComplete="email"
-              autoFocus
             />
             <TextField
               margin="normal"
@@ -109,6 +108,11 @@ export default function Register(props) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={
+              email.length === 0 ||
+              password.length === 0 ||
+              password !== confirmPassword
+              }
             >
               Register
             </Button>

@@ -23,13 +23,11 @@ app.use(express.static(path.join(__dirname, "public")));
 const usersRouter = require("./routes/users");
 const expensesRouter = require("./routes/expenses");
 const incomesRouter = require("./routes/incomes");
-const categoriesRouter = require("./routes/categories");
 const authenticateRouter = require("./routes/authenticate");
 
 app.use("/api/users", usersRouter);
 app.use("/api/expenses", expensesRouter(db));
 app.use("/api/incomes", incomesRouter);
-app.use("/api/categories", categoriesRouter);
 app.use("/api/auth", authenticateRouter(db));
 
 

@@ -16,16 +16,16 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard"  element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Expenses" element={<Expenses />} />
+        <Route path="/expenses" element={<Expenses />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
       <Navbar />
       <Sidebar />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
