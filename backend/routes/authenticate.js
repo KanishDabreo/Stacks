@@ -32,9 +32,8 @@ module.exports = (db) => {
       errors.push({ message:'Passwords do not match.' });
       return;
     } else {
-      try {
-        // const salt = await bcrypt.genSalt(10);    
-        // const hashedPassword = await bcrypt.hash(password, salt);
+      try {  
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         let queryString = `INSERT INTO users (name, email, password, avatar_url) VALUES ($1, $2, $3, $4) RETURNING *`;
         let queryParams = [ name, email, password, 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png' ];
@@ -53,23 +52,17 @@ module.exports = (db) => {
 
     const { email, password } = req.body;
 
-    const salt = await bcrypt.genSalt(10);
-    
-    // const hashedPassword = await bcrypt.hash(password, salt);
-    // console.log(hashedPassword);
     db.query(`SELECT * FROM users WHERE email = $1;`, [email])
     .then(async data => {
       console.log(data.rows[0].password);
       const user = data.rows[0];
-      const password = user.password;
-      console.log(user.name);
       // Check if user exists in DB        
         if (!user) {
           return res.status(400).send('User does not exist');
         } else {
           try {
-            if (user.password === password) {
-              res.send(user.name);
+            if (await bcrypt.compare(password, user.password)) {
+              res.send(user);
             } else {
               res.send("Invalid username or password");
             }
