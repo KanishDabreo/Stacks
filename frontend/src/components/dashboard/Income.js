@@ -34,7 +34,7 @@ export default function Income() {
 
   useEffect(() => {
     incomeData();
-  }, [])  
+  }, []);
 
 
   return (
@@ -44,7 +44,6 @@ export default function Income() {
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
             <TableCell>Type</TableCell>
             <TableCell align="right">Total Amount</TableCell>
           </TableRow>
@@ -53,7 +52,6 @@ export default function Income() {
           {incomes.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.date_created}</TableCell>
-              <TableCell>{row.income_desc}</TableCell>
               <TableCell>{row.income_type}</TableCell>
               <TableCell align="right">{`$${row.income_amt}`}</TableCell>
             </TableRow>
