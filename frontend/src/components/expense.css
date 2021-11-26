@@ -1,12 +1,13 @@
-.expense-page {
-  margin-top: 125px;
-  margin-left: 100px;
+.add-expense {
+  display: flex;
+  flex-direction: column;
 }
 
-.expense-container {
-  margin-top: 50px;
+.income-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .submit-button {
-  margin-top: 50px;
+  margin-top: 15px;
 }

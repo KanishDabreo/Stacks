@@ -1,29 +1,59 @@
-import React from 'react'
 import { useState } from 'react';
 import "./Sidebar.css";
-import { Link } from 'react-router-dom'
-import { SidebarInput } from './SidebarInput';
+import { getUser } from '../utils/userAuth';
+import Tooltip from '@mui/material/Tooltip';
+import { Link } from 'react-router-dom';
+import { FaUser } from 'react-icons/fa';
+import { RiBarChart2Fill, RiHome2Fill, RiRoadMapFill } from 'react-icons/ri';
 
 export default function Sidebar(props) {
-  const [sidebar, setSidebar] = useState(false)
-  const showSidebar = () => setSidebar(!sidebar)
+  const user = getUser();
+  const [open, setOpen] = useState(false);
 
-  return (
-    <div className="sidebar">
-      <Link to="#" className="sidebar_menu">
-      </Link>
-      <li>
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
 
-      </li>
-{SidebarInput.map((item, index)=>{
-  return(
-    <li key={index} className={item.cName}>
-    <Link to={item.path}>
-      {item.icon}
-      <span>{item.title}</span>
-    </Link>
-    </li>
-  )
-})}
-    </div>
-)};
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
+  if (!user) {
+    return (
+      <div>
+      </div>
+    )
+  } else {
+    return (
+      <div className="sidebar-container">
+        <Tooltip
+          className="sidebar-item"
+          onClose={handleTooltipClose} 
+          onOpen={handleTooltipOpen}    
+          title="Home">
+          <Link to="/"><h2><RiHome2Fill /></h2></Link>
+        </Tooltip>
+        <Tooltip
+          className="sidebar-item"
+          onClose={handleTooltipClose} 
+          onOpen={handleTooltipOpen}    
+          title="Profile">
+          <Link to="/"><h2><FaUser /></h2></Link>
+        </Tooltip>
+        <Tooltip
+          className="sidebar-item"
+          onClose={handleTooltipClose} 
+          onOpen={handleTooltipOpen}    
+          title="Dashboard">
+          <Link to="/dashboard"><h2><RiBarChart2Fill /></h2></Link>
+        </Tooltip>
+        <Tooltip
+          className="sidebar-item"
+          onClose={handleTooltipClose} 
+          onOpen={handleTooltipOpen}    
+          title="Maps">
+          <Link to="/"><h2><RiRoadMapFill /></h2></Link>
+        </Tooltip>
+      </div>
+    )
+  }
+};

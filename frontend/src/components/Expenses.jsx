@@ -10,16 +10,14 @@ export default function AddExpenses(props) {
   const user = getUser();
 
   return (
-    <div className="addexpense-page">
-      <div>{user.name}</div>
-      <h4>Please enter your income: </h4>
+    <div className="add-expense">
       <div class="income-container">
         <Row className="mb-3">
-          <Form.Group as={Col} sm={2} controlId="formGridCity">
-            <Form.Label>Amount</Form.Label>
+          <Form.Group as={Col} large={2} controlId="formGridCity">
+            <Form.Label>Income</Form.Label>
               <Form.Control type="text" placeholder="1000" />
           </Form.Group>
-          <Form.Group as={Col} sm={2} controlId="formGridState">
+          <Form.Group as={Col} large={2} controlId="formGridState">
             <Form.Label>Type</Form.Label>
             <Form.Select defaultValue="Choose...">
               <option>Select ...</option>
@@ -36,14 +34,13 @@ export default function AddExpenses(props) {
           </Form.Group>
         </Row>
       </div>
-      <div class="expense-container">
-      <h4>Please enter your expenses: </h4>
+      <div class="income-container">
         <Row className="mb-3">
-            <Form.Group as={Col} sm={2} controlId="formGridCity">
-              <Form.Label>Amount</Form.Label>
+            <Form.Group as={Col} large={2} controlId="formGridCity">
+              <Form.Label>Expenses:</Form.Label>
                 <Form.Control type="text" placeholder="1000" />
             </Form.Group>
-            <Form.Group as={Col} sm={2} controlId="formGridState">
+            <Form.Group as={Col} large={2} controlId="formGridState">
               <Form.Label>Type</Form.Label>
               <Form.Select defaultValue="Choose...">
                 <option>Select ...</option>
