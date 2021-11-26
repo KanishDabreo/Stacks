@@ -27,7 +27,7 @@ const authenticateRouter = require("./routes/authenticate");
 
 app.use("/api/users", usersRouter);
 app.use("/api/expenses", expensesRouter);
-app.use("/api/incomes", incomesRouter);
+app.use("/api/incomes", incomesRouter(db));
 app.use("/api/auth", authenticateRouter(db));
 
 
