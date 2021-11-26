@@ -11,7 +11,6 @@ import Chart from './Chart';
 import Amount from './Amount';
 import Expenses from './Expenses';
 import Income from './Income';
-import AddExpenses from '../AddExpenses';
 
 const mdTheme = createTheme();
 
@@ -31,8 +30,7 @@ function DashboardContent() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <AddExpenses />
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>           
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
