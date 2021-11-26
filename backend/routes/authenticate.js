@@ -48,7 +48,7 @@ module.exports = (db) => {
 
     db.query(`SELECT * FROM users WHERE email = $1;`, [email])
     .then(async data => {
-      console.log(data.rows[0].password);
+      //`console.log(data.rows[0].password);
       const user = data.rows[0];
       // Check if user exists in DB        
         if (!user) {
