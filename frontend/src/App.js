@@ -1,12 +1,12 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Home from './components/Home';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/dashboard/Dashboard';
 import Register from './components/Register';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Expenses from './components/Expenses';
-import About from './components/About';
+import About from './components/about/About';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';

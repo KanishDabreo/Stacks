@@ -39,7 +39,7 @@ export default function Expenses(props) {
  }, [user])
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    //event.preventDefault();
 
     const expData = { userid: user.id, expAmt, expType, expDate };
     const expURL = "http://localhost:8080/api/expenses/";
@@ -48,7 +48,7 @@ export default function Expenses(props) {
       console.log(expData);
       const { data } = await axios.post(expURL, expData);
       console.log(data);
-      navigate('/expenses');
+      navigate('/dashboard');
     } catch (error) {
       console.log("error: ++++++++", 'There already exists an account with this name or email');
     }
@@ -56,7 +56,6 @@ export default function Expenses(props) {
   
   return (
     <div className="expense-page">
-      {count}
       <div className="expense-container">
       <h4>Please enter your expense details: </h4>
         <Row className="mb-3">
@@ -84,6 +83,9 @@ export default function Expenses(props) {
               <Form.Label>Date</Form.Label>
               <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={expDate} onChange={(event) => setExpDate(event.target.value)}/>
             </Form.Group>
+            <div className="count">
+              {count}
+            </div>
         </Row>
         <Button className="submit-button" variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
       </div>
