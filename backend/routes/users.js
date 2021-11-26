@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const cookieSession = require('cookie-session');
+// const bcrypt = require('bcrypt');
+// const cookieSession = require('cookie-session');
 
 module.exports = (db) => {
-  outer.use(cookieSession({
-    name: 'session',
-    keys: ['key1', 'key2'],
-  }));
+  // outer.use(cookieSession({
+  //   name: 'session',
+  //   keys: ['key1', 'key2'],
+  // }));
 
 //user dashboard
 // users.get('/', function (req, res, next) {
