@@ -3,11 +3,12 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Title from './Title';
 
-function preventDefault(event) {
-  event.preventDefault();
-}
 
 export default function Deposits() {
+  function preventDefault(event) {
+    event.preventDefault();
+  }
+
   return (
     <React.Fragment>
       <Title>Recent Amount</Title>
