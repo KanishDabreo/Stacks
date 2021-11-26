@@ -6,12 +6,12 @@ import { getUser } from '../utils/userAuth';
 
   
 const Navbar = (props) => {
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   const user = getUser();
 
-  const logOut = () => {
-    localStorage.clear();
+  const logOut = async () => {
     navigate('/');
+    localStorage.clear();
   }
 
   if (!user) {

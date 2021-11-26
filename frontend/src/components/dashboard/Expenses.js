@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
 
-// Generate Order Data
+// Generate Expenses Data
 function createData(id, date, name, type, amount) {
   return { id, date, name, type, amount };
 }
@@ -54,7 +54,7 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Orders() {
+export default function Expenses() {
   return (
     <React.Fragment>
       <Title>Recent Expenses</Title>

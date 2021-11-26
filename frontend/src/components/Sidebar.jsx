@@ -17,7 +17,12 @@ export default function Sidebar(props) {
   const handleTooltipOpen = () => {
     setOpen(true);
   };
-  if (user) {
+  if (!user) {
+    return (
+      <div>
+      </div>
+    )
+  } else {
     return (
       <div className="sidebar-container">
         <Tooltip
