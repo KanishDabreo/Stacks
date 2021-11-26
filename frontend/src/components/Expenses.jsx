@@ -84,7 +84,7 @@ export default function Expenses(props) {
               <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={expDate} onChange={(event) => setExpDate(event.target.value)}/>
             </Form.Group>
             <div className="count">
-              {count}
+              {count, setCount}
             </div>
         </Row>
         <Button className="submit-button" variant="success" type="submit" onClick={handleSubmit}>Submit</Button>

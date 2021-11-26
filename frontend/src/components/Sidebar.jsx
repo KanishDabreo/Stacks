@@ -4,7 +4,7 @@ import { getUser } from '../utils/userAuth';
 import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
-import { RiBarChart2Fill, RiHome2Fill, RiRoadMapFill } from 'react-icons/ri';
+import { RiBarChart2Fill, RiHome2Fill, RiRoadMapFill, RiAddBoxFill } from 'react-icons/ri';
 
 export default function Sidebar(props) {
   const user = getUser();
@@ -52,6 +52,13 @@ export default function Sidebar(props) {
           onOpen={handleTooltipOpen}    
           title="Maps">
           <Link to="/"><h2><RiRoadMapFill /></h2></Link>
+        </Tooltip>
+        <Tooltip
+          className="sidebar-item"
+          onClose={handleTooltipClose} 
+          onOpen={handleTooltipOpen}    
+          title="Add Expense">
+          <Link to="/expenses"><h2><RiAddBoxFill /></h2></Link>
         </Tooltip>
       </div>
     )
