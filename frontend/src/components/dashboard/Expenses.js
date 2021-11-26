@@ -38,6 +38,11 @@ export default function Expenses() {
     expensesData();
   }, []);
 
+  const formatDate = (date) => {
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(date).toLocaleDateString(undefined, options)
+  }
+
   return (
     <>
       <Title>Recent Expenses</Title>
@@ -52,7 +57,7 @@ export default function Expenses() {
         <TableBody>
           {expenses.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.expense_date}</TableCell>
+              <TableCell>{formatDate(row.expense_date)}</TableCell>
               <TableCell>{row.expense_desc}</TableCell>
               <TableCell align="right">{`$${row.expense_amt}`}</TableCell>
             </TableRow>
