@@ -25,7 +25,7 @@ export const SidebarInput = [
   {
     title: 'Income',
     path: '/incomes',
-    icon: <iFillPlusCircle/>,
+    icon: <AiFillPlusCircle/>,
     cName: 'sidebar_text'
   },
   {
