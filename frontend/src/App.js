@@ -10,9 +10,13 @@ import About from './components/About';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
+import Context from './app-context';
+import { useState } from 'react';
 
 function App() {
+  const [ count, setCount ] = useState("");
   return (
+    <Context.Provider value={{count, setCount}} >
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
@@ -27,6 +31,7 @@ function App() {
       <Sidebar />
       <Footer />
     </div>
+    </Context.Provider>
   );
 }
 

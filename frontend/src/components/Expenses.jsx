@@ -5,24 +5,44 @@ import Button from 'react-bootstrap/Button';
 // import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 import './expense.css';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Context from '../app-context';
 
 export default function Expenses(props) {
+  const [ user, setUser ] = useState({});
   const [ expAmt, setExpAmt ] = useState("");
   const [ expType, setExpType ] = useState("");
   const [ expDate, setExpDate ] = useState("");
+  const { count, setCount } = useContext(Context);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const userString = localStorage.getItem("userSession")
+    if (!userString) {
+      navigate("/login");
+    }
+    const userObject = JSON.parse(userString);
+    setUser(userObject);
+  }, [navigate])
+
+  useEffect(() => {
+    if (user.id) {
+    const sumDataURL = `http://localhost:8080/api/expenses/${user.id}`;
+    axios.get(sumDataURL).then((res) => {
+      console.log(res.data);
+      const totalCountExp = res.data.pizza;
+      //use state count
+      setCount(totalCountExp);
+      })
+    }
+ }, [user])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const expData = { expAmt, expType, expDate };
+    const expData = { userid: user.id, expAmt, expType, expDate };
     const expURL = "http://localhost:8080/api/expenses/";
-
-    setExpAmt("");
-    setExpType("");
-    setExpDate("");
 
     try {
       console.log(expData);
@@ -36,6 +56,7 @@ export default function Expenses(props) {
   
   return (
     <div className="expense-page">
+      {count}
       <div className="expense-container">
       <h4>Please enter your expense details: </h4>
         <Row className="mb-3">

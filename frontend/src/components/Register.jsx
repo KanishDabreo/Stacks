@@ -23,11 +23,6 @@ export default function Register(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-
     const registerData = { name, email, password, confirmPassword };
     const registerURL = "http://localhost:8080/api/auth/register";
 
