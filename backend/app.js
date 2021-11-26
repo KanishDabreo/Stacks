@@ -30,7 +30,6 @@ app.use("/api/expenses", expensesRouter(db));
 app.use("/api/incomes", incomesRouter);
 app.use("/api/auth", authenticateRouter(db));
 
-
 // Test:
 app.get("/",(req, res) => {
   res.send("hello world")
