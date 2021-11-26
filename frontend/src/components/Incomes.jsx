@@ -19,7 +19,7 @@ const incomes = () => {
 
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="inputGroupFile02">
-        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Upload Invoice</label>
+        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Invoice</label>
         </input>
       </div>
       <div class="input-group-append">
@@ -35,9 +35,15 @@ const incomes = () => {
       </div>
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text">With textarea</span>
+          <span class="input-group-text">Description</span>
         </div>
         <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div>
+        <input type="radio" name="gender" id="male"></input>
+        <label for="male">Deposted</label>
+        <input type="radio" name="gender" id="female"></input>
+        <label for="female">Pending</label>
       </div>
     </div>
   </form>
