@@ -18,16 +18,9 @@ const Navbar = (props) => {
     return (
       <div className="navbar-container">
         <li><Link to="/"><img className="logo" src="./logo.png" alt="logo" /></Link></li>
-        <div className="ml-auto">
-          <Button 
-            variant="transparent_btn" 
-            type="submit" 
-            size="sm" 
-            style={{fontSize: '20px', fontWeight: 'bold'}} 
-            onClick={() => navigate('/about')}>
-            About
-          </Button>        
-          <Button 
+        <div className="ml-auto">       
+          <Button
+            className="button"
             variant="success" 
             type="submit" 
             size="sm" 
@@ -43,16 +36,9 @@ const Navbar = (props) => {
       <div className="navbar-container">
         <li><Link to="/"><img className="logo" src="./logo.png" alt="logo" /></Link></li>
         <div className="ml-auto">
-          <div>Welcome, {user.name}</div>
-          <Button 
-            variant="transparent_btn" 
-            type="submit" 
-            size="sm" 
-            style={{fontSize: '20px', fontWeight: 'bold'}} 
-            onClick={() => navigate('/about')}>
-            About
-          </Button>        
-          <Button 
+          <div>Welcome, {user.name}</div>       
+          <Button
+            className="button"
             variant="success" 
             type="submit" 
             size="sm" 
