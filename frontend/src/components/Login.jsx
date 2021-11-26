@@ -22,8 +22,8 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const loginData = { email, password };
 
+    const loginData = { email, password };
     const loginURL = "http://localhost:8080/api/auth/login";
 
     try {

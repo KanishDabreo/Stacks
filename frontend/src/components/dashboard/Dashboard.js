@@ -1,5 +1,4 @@
 import './Dashboard.css';
-import { getUser } from '../../utils/userAuth';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -11,11 +10,39 @@ import Chart from './Chart';
 import Amount from './Amount';
 import Expenses from './Expenses';
 import Income from './Income';
+import { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Context from '../../app-context';
+import axios from 'axios';
 
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const user = getUser();
+  const [ user, setUser ] = useState({});
+  const { count, setCount } = useContext(Context);
+  const navigate = useNavigate();
+  console.log(count);
+
+  useEffect(() => {
+    const userString = localStorage.getItem("userSession")
+    if (!userString) {
+      navigate("/login");
+    }
+    const userObject = JSON.parse(userString);
+    setUser(userObject);
+  }, [navigate])
+
+  useEffect(() => {
+    if (user.id) {
+    const sumDataURL = `http://localhost:8080/api/expenses/${user.id}`;
+    axios.get(sumDataURL).then((res) => {
+      console.log(res.data);
+      const totalCountExp = res.data.pizza;
+      //use state count
+      setCount(totalCountExp);
+      })
+    }
+  }, [user])
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -55,7 +82,7 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Amount />
+                  <Amount count={count}/>
                 </Paper>
               </Grid>
               {/* Recent Expenses */}
@@ -79,5 +106,8 @@ function DashboardContent() {
 }
 
 export default function Dashboard() {
-  return <DashboardContent />;
+  
+  return (
+    <DashboardContent />
+  )
 }

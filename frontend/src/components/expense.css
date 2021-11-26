@@ -1,13 +1,17 @@
-.add-expense {
-  display: flex;
-  flex-direction: column;
+.expense-page {
+  margin-top: 125px;
+  margin-left: 180px;
 }
 
-.income-container {
-  display: flex;
-  flex-direction: column;
+/*this affects each row inside the expense-container*/
+.expense-container .col-sm-3 {
+  margin-top: 25px;
 }
 
 .submit-button {
-  margin-top: 15px;
+  margin-top: 13px;
+}
+
+.count {
+  color: white;
 }

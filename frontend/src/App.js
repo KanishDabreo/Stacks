@@ -13,7 +13,9 @@ import Profile from './components/Profile';
 import Income from './components/dashboard/Income';
 
 function App() {
+  const [ count, setCount ] = useState("");
   return (
+    <Context.Provider value={{count, setCount}} >
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
@@ -29,6 +31,7 @@ function App() {
       <Sidebar />
       <Footer />
     </div>
+    </Context.Provider>
   );
 }
 
