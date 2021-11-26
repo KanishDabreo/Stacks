@@ -103,6 +103,7 @@ export default function Register(props) {
               autoComplete="current-password"
             />
             <Button
+              className="button"
               type="submit"
               fullWidth
               variant="contained"

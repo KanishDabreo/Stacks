@@ -77,6 +77,7 @@ export default function Login() {
               autoComplete="current-password"
             />
             <Button
+              className="button"
               type="submit"
               fullWidth
               variant="contained"

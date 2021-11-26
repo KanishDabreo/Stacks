@@ -35,8 +35,8 @@ const Navbar = (props) => {
     return (
       <div className="navbar-container">
         <li><Link to="/"><img className="logo" src="./logo.png" alt="logo" /></Link></li>
+        <div className="user-name">Welcome, {user.name}</div>       
         <div className="ml-auto">
-          <div>Welcome, {user.name}</div>       
           <Button
             className="button"
             variant="success" 
