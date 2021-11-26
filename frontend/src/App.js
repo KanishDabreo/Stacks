@@ -6,7 +6,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Expenses from './components/Expenses';
-import About from './components/About';
+import About from './components/about/About';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
