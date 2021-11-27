@@ -10,18 +10,17 @@ import Chart from './Chart';
 import Amount from './Amount';
 import Expenses from './Expenses';
 import Income from './Income';
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../app-context';
 import axios from 'axios';
 
 const mdTheme = createTheme();
 
 function DashboardContent() {
   const [ user, setUser ] = useState({});
-  const { count, setCount } = useContext(Context);
+  const [ totalExpenses, setTotalExpenses ] = useState('');
+  const [ totalIncome, setTotalIncome ] = useState('');
   const navigate = useNavigate();
-  console.log(count);
 
   useEffect(() => {
     const userString = localStorage.getItem("userSession")
@@ -37,9 +36,21 @@ function DashboardContent() {
     const sumDataURL = `http://localhost:8080/api/expenses/add/${user.id}`;
     axios.get(sumDataURL).then((res) => {
       console.log(res.data);
-      const totalCountExp = res.data.pizza;
-      //use state count
-      setCount(totalCountExp);
+      const totalCountExp = res.data.total;
+      //use state totalExpenses
+      setTotalExpenses(totalCountExp);
+      })
+    }
+  }, [user])
+
+  useEffect(() => {
+    if (user.id) {
+    const sumDataURL = `http://localhost:8080/api/incomes/add/${user.id}`;
+    axios.get(sumDataURL).then((res) => {     
+      console.log(res.data);
+      const totalCountInc = res.data.total;
+      //use state totalIncome
+      setTotalIncome(totalCountInc);   
       })
     }
   }, [user])
@@ -82,7 +93,7 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Amount count={count}/>
+                  <Amount totalExpenses={totalExpenses} totalIncome={totalIncome} />
                 </Paper>
               </Grid>
               {/* Recent Expenses */}

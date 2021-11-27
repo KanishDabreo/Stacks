@@ -3,7 +3,8 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Title from './Title';
 
-export default function Deposits(props) {
+export default function Deposits({totalIncome, totalExpenses}) {
+  const netIncome = totalIncome - totalExpenses;
 
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   let today  = new Date();
@@ -15,9 +16,9 @@ export default function Deposits(props) {
 
   return (
     <React.Fragment>
-      <Title>Total Expenses</Title>
+      <Title>Net Income</Title>
       <Typography component="p" variant="h4">
-        ${props.count}
+        $ {netIncome}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
         {date}

@@ -34,11 +34,11 @@ module.exports = (db) => {
   });
 
   expenses.post('/', async (req, res) => {
-    const {userid, expAmt, expType, expDate} = req.body;
-    console.log(userid, expAmt, expType, expDate);
+    const {user_id, expAmt, expType, expDate} = req.body;
+    console.log(user_id, expAmt, expType, expDate);
 
     let queryString = `INSERT INTO expenses (expense_date, expense_amt, user_id, expenses_type) VALUES ($1, $2, $3, $4) RETURNING *`;
-    let queryParams = [expDate, expAmt, userid, expType];
+    let queryParams = [expDate, expAmt, user_id, expType];
     db.query(queryString, queryParams)
       .then(() => {
         res.status(200).json({success: true});
@@ -48,13 +48,13 @@ module.exports = (db) => {
       })
   });
 
-  expenses.get("/:userid", (req, res) => {
+  expenses.get("/add/:user_id", (req, res) => {
     let queryString2 = `SELECT SUM(expense_amt) FROM expenses WHERE user_id=$1;`;
-    let queryParams2 = [req.params.userid];
+    let queryParams2 = [req.params.user_id];
     db.query(queryString2, queryParams2)
       .then(data => {
         console.log("data:", data);
-        res.json({ pizza: data.rows[0].sum });
+        res.json({ total: data.rows[0].sum });
       })
       .catch(err => {
         console.log(err)
@@ -63,6 +63,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
   return expenses;
 
 }
