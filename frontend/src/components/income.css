@@ -1,4 +1,22 @@
-.modal-confirm {		
+.income-page {
+  margin-top: 125px;
+  margin-left: 180px;
+}
+
+/*this affects each row inside the income-container*/
+.income-container .col-sm-3 {
+  margin-top: 25px;
+}
+
+.submit-button {
+  margin-top: 13px;
+}
+
+.count {
+  color: white;
+}
+
+/* .modal-confirm {		
   color: #636363;
   width: 325px;
   margin: 30px auto;
@@ -72,4 +90,4 @@
 .trigger-btn {
   display: inline-block;
   margin: 100px auto;
-}
+} */
