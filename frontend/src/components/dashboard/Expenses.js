@@ -23,7 +23,7 @@ export default function Expenses() {
   const expensesData = async () => {
     const userId = user.id;
     console.log(userId)
-    const incomeURL = `http://localhost:8080/api/expenses/${userId}`;
+    const incomeURL = `http://localhost:8080/api/expenses/transactions/${userId}`;
 
     try {
       const { data } = await axios.get(incomeURL);
