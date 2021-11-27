@@ -44,7 +44,7 @@ const Navbar = (props) => {
             size="sm" 
             style={{fontSize: '20px', fontWeight: 'bold'}} 
             onClick={() => logOut()}>
-            LogOut
+            Log Out
           </Button>
         </div>
     </div>
