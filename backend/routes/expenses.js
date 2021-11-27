@@ -48,21 +48,21 @@ module.exports = (db) => {
       })
   });
 
-  // expenses.get("/:userid", (req, res) => {
-  //   let queryString2 = `SELECT SUM(expense_amt) FROM expenses WHERE user_id=$1;`;
-  //   let queryParams2 = [req.params.userid];
-  //   db.query(queryString2, queryParams2)
-  //     .then(data => {
-  //       console.log("data:", data);
-  //       res.json({ pizza: data.rows[0].sum });
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  // });
+  expenses.get("/:userid", (req, res) => {
+    let queryString2 = `SELECT SUM(expense_amt) FROM expenses WHERE user_id=$1;`;
+    let queryParams2 = [req.params.userid];
+    db.query(queryString2, queryParams2)
+      .then(data => {
+        console.log("data:", data);
+        res.json({ pizza: data.rows[0].sum });
+      })
+      .catch(err => {
+        console.log(err)
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
   return expenses;
 
 }
