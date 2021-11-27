@@ -64,6 +64,20 @@ module.exports = (db) => {
       });
   });
 
-  return expenses;
+  expenses.get("/type/:userid", (req, res) => {
+    let queryString = `SELECT expenses_type.expense_desc AS expenses_name, SUM(expense_amt) FROM expenses JOIN expenses_type ON expenses_type.id = expenses.expenses_type WHERE user_id=$1 GROUP BY expenses_name;`;
+    db.query(queryString, [req.params.userid])
+      .then(data => {
+        const expenses = data.rows;
+        res.json({ expenses })
+      })
+      .catch(err => {
+        console.log(err)
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
+  return expenses;
 }
