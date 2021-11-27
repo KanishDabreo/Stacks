@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { getUser } from '../utils/userAuth';
 
   
-const Navbar = (props) => {
+const Navbar = ({setIsLoggedIn}) => {
   const navigate = useNavigate();
   const user = getUser();
 
   const logOut = async () => {
     navigate('/');
     localStorage.clear();
+    setIsLoggedIn(false);
   }
 
   if (!user) {
