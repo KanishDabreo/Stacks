@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Link from '@mui/material/Link';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,74 +5,55 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
-
-// Generate Income Data
-function createData(id, date, name, type, amount) {
-  return { id, date, name, type, amount };
-}
-
-const rows = [
-  createData(
-    0,
-    '19 Oct, 2021',
-    'Biweekly Salary',
-    'Salary',
-    3548.15,
-  ),
-  createData(
-    1,
-    '27 Oct, 2021',
-    'Bitcoin',
-    'Interest',
-    216.99,
-  ),
-  createData(
-    3,
-    '02 Nov, 2021',
-    'Repay',
-    'Other',
-    350.50,
-  ),
-  createData(
-    4,
-    '27 Nov, 2021',
-    'Biweekly Salary',
-    'Salary',
-    3548.15,
-  ),
-  createData(
-    5,
-    '30 Nov, 2021',
-    'Freelance Project',
-    'Freelance',
-    3212.79,
-  ),
-];
-
-function preventDefault(event) {
-  event.preventDefault();
-}
+import { getUser } from '../../utils/userAuth';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export default function Income() {
+
+  const [incomes, setIncomes] = useState([]);
+  
+  function preventDefault(event) {
+    event.preventDefault();
+  }
+  const user = getUser();
+
+  const incomeData = async () => {
+    const userId = user.id;
+    console.log(userId)
+    const incomeURL = `http://localhost:8080/api/incomes/${userId}`;
+
+    try {
+      const { data } = await axios.get(incomeURL);
+      console.log("+++++++++++", data);
+      setIncomes([...data.incomes])
+    } catch (error) {
+      console.log("error: =========", error );
+    }
+  }
+
+  useEffect(() => {
+    incomeData();
+  }, []);
+
+
   return (
-    <React.Fragment>
+    <>
       <Title>Recent Income</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
             <TableCell>Type</TableCell>
             <TableCell align="right">Total Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {incomes.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.type}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+              <TableCell>{row.date_created}</TableCell>
+              <TableCell>{row.income_type}</TableCell>
+              <TableCell align="right">{`$${row.income_amt}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -81,6 +61,6 @@ export default function Income() {
       <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
         See more income
       </Link>
-    </React.Fragment>
+    </>
   );
 }

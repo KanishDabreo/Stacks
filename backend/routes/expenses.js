@@ -1,10 +1,39 @@
 const express = require('express');
-const router = express.Router();
+const expenses = express.Router();
 
 module.exports = (db) => {
 
   //access all expenses
-  router.post('/', async (req, res) => {
+  expenses.get('/', (req, res) => {
+    const user_id = req.body;
+    console.log(req.body);
+    db.query(`SELECT * FROM expenses;`)
+    .then(data => {
+      const expenses = data.rows;
+      res.json({ expenses })
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  });
+
+  expenses.get('/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(`SELECT *, expenses_type.expense_desc AS expenses_name FROM expenses JOIN expenses_type ON expenses_type.id = expenses.expenses_type WHERE user_id = $1;`, [user_id])
+    .then(data => {
+      const expenses = data.rows;
+      res.json({ expenses })
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  });
+
+  expenses.post('/', async (req, res) => {
     const {userid, expAmt, expType, expDate} = req.body;
     console.log(userid, expAmt, expType, expDate);
 
@@ -19,21 +48,21 @@ module.exports = (db) => {
       })
   });
 
-  router.get("/:userid", (req, res) => {
-    let queryString2 = `SELECT SUM(expense_amt) FROM expenses WHERE user_id=$1;`;
-    let queryParams2 = [req.params.userid];
-    db.query(queryString2, queryParams2)
-      .then(data => {
-        console.log("data:", data);
-        res.json({ pizza: data.rows[0].sum });
-      })
-      .catch(err => {
-        console.log(err)
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
-  return router;
+  // expenses.get("/:userid", (req, res) => {
+  //   let queryString2 = `SELECT SUM(expense_amt) FROM expenses WHERE user_id=$1;`;
+  //   let queryParams2 = [req.params.userid];
+  //   db.query(queryString2, queryParams2)
+  //     .then(data => {
+  //       console.log("data:", data);
+  //       res.json({ pizza: data.rows[0].sum });
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  // });
+  return expenses;
 
 }
