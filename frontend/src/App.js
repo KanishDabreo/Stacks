@@ -11,10 +11,20 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
 import Context from './app-context';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getUser } from './utils/userAuth';
 
 function App() {
+  const user = getUser();
   const [ count, setCount ] = useState("");
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, [])
+
   return (
     <Context.Provider value={{count, setCount}} >
     <div className="App">
@@ -22,13 +32,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/dashboard"  element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-      <Navbar />
-      <Sidebar />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
+      <Sidebar isLoggedIn={isLoggedIn} />
       <Footer />
     </div>
     </Context.Provider>

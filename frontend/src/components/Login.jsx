@@ -13,7 +13,7 @@ import axios from 'axios';
 
 
 
-export default function Login() {
+export default function Login({setIsLoggedIn}) {
   const theme = createTheme();
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");  
@@ -30,6 +30,7 @@ export default function Login() {
       const { data } = await axios.post(loginURL, loginData);
       console.log("data from Login:", data);
       localStorage.setItem('userSession', JSON.stringify(data));
+      setIsLoggedIn(true);
       navigate('/dashboard');
     } catch (error) {
       console.log("error: =========", error );
