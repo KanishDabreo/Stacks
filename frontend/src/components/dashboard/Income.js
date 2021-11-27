@@ -36,6 +36,11 @@ export default function Income() {
     incomeData();
   }, []);
 
+  const formatDate = (date) => {
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(date).toLocaleDateString(undefined, options)
+  }
+
 
   return (
     <>
@@ -51,7 +56,7 @@ export default function Income() {
         <TableBody>
           {incomes.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.date_created}</TableCell>
+              <TableCell>{formatDate(row.date_created)}</TableCell>
               <TableCell>{row.income_type}</TableCell>
               <TableCell align="right">{`$${row.income_amt}`}</TableCell>
             </TableRow>

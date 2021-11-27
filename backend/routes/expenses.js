@@ -19,7 +19,7 @@ module.exports = (db) => {
     });
   });
 
-  expenses.get('/:user_id', (req, res) => {
+  expenses.get('/transactions/:user_id', (req, res) => {
     const user_id = req.params.user_id;
     db.query(`SELECT *, expenses_type.expense_desc AS expenses_name FROM expenses JOIN expenses_type ON expenses_type.id = expenses.expenses_type WHERE user_id = $1;`, [user_id])
     .then(data => {

@@ -15,7 +15,16 @@ import { useState } from 'react';
 import Context from 'react-bootstrap/esm/AccordionContext';
 
 function App() {
+  const user = getUser();
   const [ count, setCount ] = useState("");
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, [])
+
   return (
     <Context.Provider value={{count, setCount}} >
     <div className="App">
@@ -23,14 +32,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/dashboard"  element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/incomes" element={<Income />} />
       </Routes>
-      <Navbar />
-      <Sidebar />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
+      <Sidebar isLoggedIn={isLoggedIn} />
       <Footer />
     </div>
     </Context.Provider>

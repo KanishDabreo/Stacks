@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import { RiBarChart2Fill, RiHome2Fill, RiRoadMapFill, RiAddBoxFill } from 'react-icons/ri';
 
-export default function Sidebar(props) {
+export default function Sidebar({isLoggedIn}) {
   const user = getUser();
   const [open, setOpen] = useState(false);
 
@@ -17,7 +17,8 @@ export default function Sidebar(props) {
   const handleTooltipOpen = () => {
     setOpen(true);
   };
-  if (!user) {
+
+  if (!isLoggedIn) {
     return (
       <div>
       </div>

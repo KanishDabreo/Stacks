@@ -28,15 +28,11 @@ export default function Register(props) {
 
     try {
       const { data } = await axios.post(registerURL, registerData);
-      navigate('/login', {state: data});
+      navigate('/login');
     } catch (error) {
       console.log("error: ++++++++", 'There already exists an account with this name or email');
     }
   };
-
-  const handleClick = async () => {
-    navigate('/login');
-  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -111,7 +107,6 @@ export default function Register(props) {
               email.length === 0 ||
               password.length === 0 ||
               password !== confirmPassword}
-              onClick={handleClick}
             >
               Register
             </Button>

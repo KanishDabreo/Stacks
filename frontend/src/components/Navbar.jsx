@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { getUser } from '../utils/userAuth';
 
   
-const Navbar = (props) => {
+const Navbar = ({setIsLoggedIn}) => {
   const navigate = useNavigate();
   const user = getUser();
 
   const logOut = async () => {
     navigate('/');
     localStorage.clear();
+    setIsLoggedIn(false);
   }
 
   if (!user) {
@@ -44,7 +45,7 @@ const Navbar = (props) => {
             size="sm" 
             style={{fontSize: '20px', fontWeight: 'bold'}} 
             onClick={() => logOut()}>
-            LogOut
+            Log Out
           </Button>
         </div>
     </div>

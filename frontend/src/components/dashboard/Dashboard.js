@@ -34,7 +34,7 @@ function DashboardContent() {
 
   useEffect(() => {
     if (user.id) {
-    const sumDataURL = `http://localhost:8080/api/expenses/${user.id}`;
+    const sumDataURL = `http://localhost:8080/api/expenses/add/${user.id}`;
     axios.get(sumDataURL).then((res) => {
       console.log(res.data);
       const totalCountExp = res.data.pizza;

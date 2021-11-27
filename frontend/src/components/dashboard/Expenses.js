@@ -23,7 +23,7 @@ export default function Expenses() {
   const expensesData = async () => {
     const userId = user.id;
     console.log(userId)
-    const incomeURL = `http://localhost:8080/api/expenses/${userId}`;
+    const incomeURL = `http://localhost:8080/api/expenses/transactions/${userId}`;
 
     try {
       const { data } = await axios.get(incomeURL);
@@ -37,6 +37,11 @@ export default function Expenses() {
   useEffect(() => {
     expensesData();
   }, []);
+
+  const formatDate = (date) => {
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(date).toLocaleDateString(undefined, options)
+  }
 
   return (
     <>
@@ -52,7 +57,7 @@ export default function Expenses() {
         <TableBody>
           {expenses.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.expense_date}</TableCell>
+              <TableCell>{formatDate(row.expense_date)}</TableCell>
               <TableCell>{row.expense_desc}</TableCell>
               <TableCell align="right">{`$${row.expense_amt}`}</TableCell>
             </TableRow>
