@@ -33,9 +33,24 @@ module.exports = (db) => {
     });
   });
 
-  incomes.get('/:income_id', function(req, res, next) {
+  incomes.get('/:income_id', function(req, res) {
     res.json({})
   });
 
+  incomes.get("/add/:user_id", (req, res) => {
+    let queryString2 = `SELECT SUM(income_amt) FROM income WHERE user_id=$1;`;
+    let queryParams2 = [req.params.user_id];
+    db.query(queryString2, queryParams2)
+      .then(data => {
+        console.log("data:", data);
+        res.json({ total: data.rows[0].sum });
+      })
+      .catch(err => {
+        console.log(err)
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
   return incomes;
 }
