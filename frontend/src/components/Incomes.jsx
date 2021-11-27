@@ -1,6 +1,4 @@
 import React from 'react';
-import incomes from '../../../backend/routes/incomes';
-import { getUser } from '../utils/userAuth';
 import './income.css';
 
 import Form from 'react-bootstrap/Form';
@@ -12,11 +10,11 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Context from '../app-context';
 
-export default function Incomes(props) {
+export default function Income(props) {
   const [ user, setUser ] = useState({});
-  const [ expAmt, setExpAmt ] = useState("");
-  const [ expType, setExpType ] = useState("");
-  const [ expDate, setExpDate ] = useState("");
+  const [ incomeAmt, setincomeAmt ] = useState("");
+  const [ incomeType, setincomeType ] = useState("");
+  const [ incomeDate, setincomeDate ] = useState("");
   const { count, setCount } = useContext(Context);
   const navigate = useNavigate();
 
@@ -36,7 +34,7 @@ export default function Incomes(props) {
       console.log(res.data);
       const totalCountExp = res.data.pizza;
       //use state count
-      setCount(totalCountExp);
+      // setCount(totalCountExp);
       })
     }
  }, [user])
@@ -44,12 +42,12 @@ export default function Incomes(props) {
   const handleSubmit = async (event) => {
     //event.preventDefault();
 
-    const expData = { userid: user.id, expAmt, expType, expDate };
+    const incomeData = { userid: user.id, incomeAmt, incomeType, incomeDate };
     const expURL = "http://localhost:8080/api/Incomes/";
 
     try {
-      console.log(expData);
-      const { data } = await axios.post(expURL, expData);
+      console.log(incomeData);
+      const { data } = await axios.post(expURL, incomeData);
       console.log(data);
       navigate('/dashboard');
     } catch (error) {
@@ -58,33 +56,31 @@ export default function Incomes(props) {
   };
   
   return (
-    <div className="expense-page">
-      <div className="expense-container">
-      <h4>Please enter your expense details: </h4>
+    <div className="income-page">
+      <div className="income-container">
+      <h4>Please enter your income details: </h4>
         <Row className="mb-3">
             <Form.Group as={Col} sm={3} controlId="formGridCity">
               <Form.Label>Amount</Form.Label>
-                <Form.Control type="text" placeholder="ex. 1000" value={expAmt} onChange={(event) => setExpAmt(event.target.value)}/>
+                <Form.Control type="text" placeholder="ex. 1000" value={incomeAmt} onChange={(event) => setincomeAmt(event.target.value)}/>
             </Form.Group>
-            <Form.Group as={Col} sm={3} controlId="formGridState" value={expType} onChange={(event) => setExpType(event.target.value)}>
+            <Form.Group as={Col} sm={3} controlId="formGridState" value={incomeType} onChange={(event) => setincomeType(event.target.value)}>
               <Form.Label>Type</Form.Label>
               <Form.Select defaultValue="Choose...">
                 <option>Select...</option>
-                <option value="1">Groceries</option>
-                <option value="2">Transportation</option>
-                <option value="3">Utility</option>
-                <option value="4">Phone</option>
-                <option value="5">Housing</option>
-                <option value="6">Pets</option>
-                <option value="7">Travel</option>
-                <option value="8">Clothing</option>
-                <option value="9">Entertainment</option>
-                <option value="9">Other</option>
+                <option value="1">Employment</option>
+                <option value="2">Investment</option>
+                <option value="3">Grant</option>
+                <option value="4">scholarship</option>
+                <option value="5">Rental Income</option>
+                <option value="6">Freelance</option>
+                <option value="7">Gift</option>
+                <option value="8">Other</option>
               </Form.Select>
             </Form.Group>
             <Form.Group as={Col} sm={3} controlId="formGridCity">
               <Form.Label>Date</Form.Label>
-              <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={expDate} onChange={(event) => setExpDate(event.target.value)}/>
+              <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={incomeDate} onChange={(event) => setincomeDate(event.target.value)}/>
             </Form.Group>
             <div className="count">
               {count}{setCount}

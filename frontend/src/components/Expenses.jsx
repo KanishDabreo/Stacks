@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Context from '../app-context';
+import Income from './Incomes';
 
 export default function Expenses(props) {
   const [ user, setUser ] = useState({});
@@ -28,12 +29,12 @@ export default function Expenses(props) {
 
   useEffect(() => {
     if (user.id) {
-    const sumDataURL = `http://localhost:8080/api/expenses/add/${user.id}`;
+    const sumDataURL = `http://localhost:8080/api/expenses/${user.id}`;
     axios.get(sumDataURL).then((res) => {
       console.log(res.data);
       const totalCountExp = res.data.pizza;
       //use state count
-      setCount(totalCountExp);
+     //setCount(totalCountExp);
       })
     }
  }, [user])
@@ -88,6 +89,7 @@ export default function Expenses(props) {
             </div>
         </Row>
         <Button className="submit-button" variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
+        <Income/>
       </div>
     </div>
   )
