@@ -25,7 +25,7 @@ export default function Expenses(props) {
     const sumDataURL = `http://localhost:8080/api/expenses/${userId}`;
     axios.get(sumDataURL).then((res) => {
       console.log(res.data);
-      const totalCountExp = res.data.pizza;
+      const totalCountExp = res.data.total;
       //use state count
      //setCount(totalCountExp);
       })
