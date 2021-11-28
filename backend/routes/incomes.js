@@ -19,9 +19,9 @@ module.exports = (db) => {
     });
   });
 
-  incomes.get('/:user_id', (req, res) => {
+  incomes.get('/transactions/:user_id', (req, res) => {
     const user_id = req.params.user_id;
-    db.query(`SELECT *, incomes.income_desc AS income_desc, income_type_id.income_desc AS income_type FROM income JOIN income_type ON income_type.id = income.income_type_id WHERE user_id = $1 ORDER BY date_created DESC;`, [user_id])
+    db.query(`SELECT *, income.income_desc AS income_type FROM income JOIN income_type ON income_type.id = income.income_type_id WHERE user_id = $1 ORDER BY date_created DESC;`, [user_id])
     .then(data => {
       const incomes = data.rows;
       res.json({ incomes })
@@ -35,16 +35,18 @@ module.exports = (db) => {
 
   incomes.post('/', async (req, res) => {
     const {user_id, incomeAmt, incomeType, incomeDate} = req.body;
-    console.log(user_id, incomeAmt, incomeType, incomeDate);
+    console.log('hello')
+    console.log("++++++++income+++++++++",user_id, incomeAmt, incomeType, incomeDate);
       // income (date_created, income_type_id, income_desc, income_amt, user_id)
-    let queryString = `INSERT INTO incomes (date_created, income_amt, user_id, income_type_id) VALUES ($1, $2, $3, $4) RETURNING *`;
-    let queryParams = [incomeDate, incomeAmt, user_id, incomeType];
+    let queryString = `INSERT INTO income (date_created, income_amt, user_id, income_type_id, income_desc) VALUES ($1, $2, $3, $4, $5) RETURNING *`;
+    let queryParams = [incomeDate, incomeAmt, user_id, incomeType, ''];
     db.query(queryString, queryParams)
       .then(() => {
         res.status(200).json({success: true});
       })
       .catch((err) => {
-        res.send(err);
+        console.log(err);
+        res.status(500).send(err);
       })
   });
 
@@ -67,5 +69,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
   return incomes;
 }

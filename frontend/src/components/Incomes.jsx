@@ -9,27 +9,23 @@ import axios from 'axios';
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Context from '../app-context';
+import { getUser } from '../utils/userAuth';
+
 
 export default function Income(props) {
-  const [ user, setUser ] = useState({});
   const [ incomeAmt, setincomeAmt ] = useState("");
   const [ incomeType, setincomeType ] = useState("");
   const [ incomeDate, setincomeDate ] = useState("");
   const { count, setCount } = useContext(Context);
+
+
+  const user = getUser();
+  const userId = user.id;
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userString = localStorage.getItem("userSession")
-    if (!userString) {
-      navigate("/login");
-    }
-    const userObject = JSON.parse(userString);
-    setUser(userObject);
-  }, [navigate])
-
-  useEffect(() => {
-    if (user.id) {
-    const sumDataURL = `http://localhost:8080/api/Incomes/add/${user.id}`;
+    if (userId) {
+    const sumDataURL = `http://localhost:8080/api/Incomes/add/${userId}`;
     axios.get(sumDataURL).then((res) => {
       console.log(res.data);
       const totalCountExp = res.data.pizza;
@@ -42,7 +38,7 @@ export default function Income(props) {
   const handleSubmit = async (event) => {
     //event.preventDefault();
 
-    const incomeData = { userid: user.id, incomeAmt, incomeType, incomeDate };
+    const incomeData = { user_id: userId, incomeAmt, incomeType, incomeDate };
     const expURL = "http://localhost:8080/api/Incomes/";
 
     try {

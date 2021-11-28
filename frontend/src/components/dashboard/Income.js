@@ -17,11 +17,11 @@ export default function Income() {
     event.preventDefault();
   }
   const user = getUser();
+  const userId = user.id;
 
   const incomeData = async () => {
-    const userId = user.id;
     console.log(userId)
-    const incomeURL = `http://localhost:8080/api/incomes/${userId}`;
+    const incomeURL = `http://localhost:8080/api/incomes/transactions/${userId}`;
 
     try {
       const { data } = await axios.get(incomeURL);
@@ -57,7 +57,7 @@ export default function Income() {
           {incomes.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{formatDate(row.date_created)}</TableCell>
-              <TableCell>{row.income_type}</TableCell>
+              <TableCell>{row.income_desc}</TableCell>
               <TableCell align="right">{`$${row.income_amt}`}</TableCell>
             </TableRow>
           ))}
