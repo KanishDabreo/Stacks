@@ -29,8 +29,9 @@ export default function Register(props) {
     try {
       const { data } = await axios.post(registerURL, registerData);
       navigate('/login');
+      console.log("**/*/*/*/*/*/*/*/*/*/*/*/*/*/*/nav*/*/*/");
     } catch (error) {
-      console.log("error: ++++++++", 'There already exists an account with this name or email');
+      console.log("error: ++++++++", error);
     }
   };
 
