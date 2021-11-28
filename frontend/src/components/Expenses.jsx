@@ -36,7 +36,7 @@ export default function Expenses(props) {
       setCount(totalCountExp);
       })
     }
- }, [user])
+  }, [user])
 
   const handleSubmit = async (event) => {
     //event.preventDefault();
