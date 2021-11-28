@@ -17,9 +17,9 @@ export default function Expenses() {
     event.preventDefault();
   }
   const user = getUser();
+  const userId = user.id;
 
   const expensesData = async () => {
-    const userId = user.id;
     console.log(userId)
     const incomeURL = `http://localhost:8080/api/expenses/transactions/${userId}`;
 
@@ -61,11 +61,6 @@ export default function Expenses() {
             </TableRow>
           ))}
         </TableBody>
-        <Table>
-            <TableCell>Date</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell align="right">Total Amount</TableCell>
-          </Table>
       </Table>
       <Link color="primary" href="/expenses" onClick={preventDefault} sx={{ mt: 3 }}>
         Add more expenses

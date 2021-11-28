@@ -9,27 +9,20 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Context from '../app-context';
 import Income from './Incomes';
+import { getUser } from '../utils/userAuth';
 
 export default function Expenses(props) {
-  const [ user, setUser ] = useState({});
   const [ expAmt, setExpAmt ] = useState("");
   const [ expType, setExpType ] = useState("");
   const [ expDate, setExpDate ] = useState("");
   const { count, setCount } = useContext(Context);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const userString = localStorage.getItem("userSession")
-    if (!userString) {
-      navigate("/login");
-    }
-    const userObject = JSON.parse(userString);
-    setUser(userObject);
-  }, [navigate])
+  const user = getUser();
+  const userId = user.id;
 
   useEffect(() => {
     if (user.id) {
-    const sumDataURL = `http://localhost:8080/api/expenses/${user.id}`;
+    const sumDataURL = `http://localhost:8080/api/expenses/${userId}`;
     axios.get(sumDataURL).then((res) => {
       console.log(res.data);
       const totalCountExp = res.data.pizza;
@@ -40,9 +33,9 @@ export default function Expenses(props) {
   }, [user])
 
   const handleSubmit = async (event) => {
-    //event.preventDefault();
+    event.preventDefault();
 
-    const expData = { userid: user.id, expAmt, expType, expDate };
+    const expData = { user_id: userId, expAmt, expType, expDate };
     const expURL = "http://localhost:8080/api/expenses/";
 
     try {

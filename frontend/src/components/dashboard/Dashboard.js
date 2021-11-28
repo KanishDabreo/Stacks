@@ -20,25 +20,14 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   const user = getUser();
-  //const [ user, setUser ] = useState({});
-  //const { count, setCount } = useContext(Context);
   const [ expenses, setExpenses ] = useState([]);
   const [ totalExpenses, setTotalExpenses ] = useState('');
   const [ totalIncome, setTotalIncome ] = useState('');
-  //const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const userString = localStorage.getItem("userSession")
-  //   if (!userString) {
-  //     navigate("/login");
-  //   }
-  //   const userObject = JSON.parse(userString);
-  //   setUser(userObject);
-  // }, [navigate])
+  const userId = user.id;
 
   useEffect(() => {
-    if (user.id) {
-    const sumDataURL = `http://localhost:8080/api/expenses/add/${user.id}`;
+    if (userId) {
+    const sumDataURL = `http://localhost:8080/api/expenses/add/${userId}`;
     axios.get(sumDataURL).then((res) => {
       console.log(res.data);
       const totalCountExp = res.data.total;
@@ -49,8 +38,8 @@ function DashboardContent() {
   }, [user])
 
   useEffect(() => {
-    if (user.id) {
-    const sumDataURL = `http://localhost:8080/api/incomes/add/${user.id}`;
+    if (userId) {
+    const sumDataURL = `http://localhost:8080/api/incomes/add/${userId}`;
     axios.get(sumDataURL).then((res) => {     
       console.log(res.data);
       const totalCountInc = res.data.total;
@@ -61,10 +50,9 @@ function DashboardContent() {
   }, [user])
 
   useEffect(() => {
-    const expensesData = async () => {
-      const userId = user.id;
+    const expensesData = async () => {      
       const COLORS = ["#FADBD8", "#EBDEF0", "#A3E4D7", "#ABEBC6", "#F8BBD0",  "#C5CAE9", "#80DEEA", "#BBDEFB", "#FFF9C4", "#DCEDC8", "#FFCDD2"]
-      const incomeURL = `http://localhost:8080/api/expenses/type/${user.id}`;
+      const incomeURL = `http://localhost:8080/api/expenses/type/${userId}`;
       try {
         const { data } = await axios.get(incomeURL);
         console.log('banana');
