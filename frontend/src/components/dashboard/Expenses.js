@@ -61,6 +61,11 @@ export default function Expenses() {
             </TableRow>
           ))}
         </TableBody>
+        <Table>
+            <TableCell>Date</TableCell>
+            <TableCell>Type</TableCell>
+            <TableCell align="right">Total Amount</TableCell>
+          </Table>
       </Table>
       <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
         See more expenses

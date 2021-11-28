@@ -11,20 +11,21 @@ import Amount from './Amount';
 import Expenses from './Expenses';
 import Income from './Income';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getUser } from '../../utils/userAuth';
+import Title from './Title';
+import Typography from '@mui/material/Typography';
 
 const mdTheme = createTheme();
 
 function DashboardContent() {
   const user = getUser();
   //const [ user, setUser ] = useState({});
-  const { count, setCount } = useContext(Context);
+  //const { count, setCount } = useContext(Context);
   const [ expenses, setExpenses ] = useState([]);
-  const navigate = useNavigate();
+  const [ totalExpenses, setTotalExpenses ] = useState('');
+  const [ totalIncome, setTotalIncome ] = useState('');
   //const navigate = useNavigate();
-  //console.log(count);
 
   // useEffect(() => {
   //   const userString = localStorage.getItem("userSession")
@@ -62,21 +63,20 @@ function DashboardContent() {
   useEffect(() => {
     const expensesData = async () => {
       const userId = user.id;
+      const COLORS = ["#FADBD8", "#EBDEF0", "#A3E4D7", "#ABEBC6", "#F8BBD0",  "#C5CAE9", "#80DEEA", "#BBDEFB", "#FFF9C4", "#DCEDC8", "#FFCDD2"]
       const incomeURL = `http://localhost:8080/api/expenses/type/${user.id}`;
       try {
         const { data } = await axios.get(incomeURL);
         console.log('banana');
         console.log("+++++++++++", data);
 
-        function formatRow(row) {
-          const res = {name: row.expenses_name, value: Number(row.sum)};
-          console.log('banana1 ' + res.name + "\t" + res.value);
+        function formatRow(row, index) {
+          const res = {name: row.expenses_name, value: Number(row.sum), fill: COLORS[index]};
           return res;
         }
       
-        const format = (rows) => {
-          const res = rows.map(formatRow);
-          console.log('banana3', res);
+        const format = (rows, index) => {
+          const res = rows.map(formatRow, index);
           return res;
         };
 
@@ -87,6 +87,14 @@ function DashboardContent() {
     }
     expensesData();
   }, [])
+
+  function withCommas(num) {
+    return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  let today  = new Date();
+  let date = today.toLocaleDateString("en-US", options);
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -110,11 +118,17 @@ function DashboardContent() {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    height: 740,
                   }}
                 >
-                   <Doughnut 
-                   expenses={expenses}/>
+                    <Title>Total Expenses</Title>
+                    <Typography component="p" variant="h4">
+                      $ {withCommas(totalExpenses)} 
+                      <Typography color="text.secondary" sx={{ flex: 1 }}>
+                        {date}
+                      </Typography>
+                    </Typography>
+                   <Doughnut expenses={expenses}/>
                 </Paper>
               </Grid>
               {/* Recent Amount */}
@@ -124,7 +138,7 @@ function DashboardContent() {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    height: 740
                   }}
                 >
                   <Amount totalExpenses={totalExpenses} totalIncome={totalIncome} />
