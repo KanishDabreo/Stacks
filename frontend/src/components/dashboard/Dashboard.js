@@ -6,20 +6,23 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Chart from './Chart';
+import Doughnut from './Doughnut';
 import Amount from './Amount';
 import Expenses from './Expenses';
 import Income from './Income';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { getUser } from '../../utils/userAuth';
 
 const mdTheme = createTheme();
 
+const user = getUser();
+
 function DashboardContent() {
   const [ user, setUser ] = useState({});
-  const [ totalExpenses, setTotalExpenses ] = useState('');
-  const [ totalIncome, setTotalIncome ] = useState('');
+  const { count, setCount } = useContext(Context);
+  const [ expenses, setExpenses ] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,6 +58,35 @@ function DashboardContent() {
     }
   }, [user])
 
+  useEffect(() => {
+    const expensesData = async () => {
+      const userId = user.id;
+      const incomeURL = `http://localhost:8080/api/expenses/type/${user.id}`;
+      try {
+        const { data } = await axios.get(incomeURL);
+        console.log('banana');
+        console.log("+++++++++++", data);
+
+        function formatRow(row) {
+          const res = {name: row.expenses_name, value: Number(row.sum)};
+          console.log('banana1 ' + res.name + "\t" + res.value);
+          return res;
+        }
+      
+        const format = (rows) => {
+          const res = rows.map(formatRow);
+          console.log('banana3', res);
+          return res;
+        };
+
+        setExpenses([...format(data.expenses)]);
+      } catch (error) {
+        console.log("error: =========", error );
+      }
+    }
+    expensesData();
+  }, [])
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -80,7 +112,8 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Chart />
+                   <Doughnut 
+                   expenses={expenses}/>
                 </Paper>
               </Grid>
               {/* Recent Amount */}

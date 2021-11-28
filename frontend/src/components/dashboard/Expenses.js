@@ -9,8 +9,6 @@ import { getUser } from '../../utils/userAuth';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-
-
 export default function Expenses() {
 
   const [expenses, setExpenses] = useState([]);
@@ -39,9 +37,9 @@ export default function Expenses() {
   }, []);
 
   const formatDate = (date) => {
-    const options = { year: "numeric", month: "long", day: "numeric" }
-    return new Date(date).toLocaleDateString(undefined, options)
-  }
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(date).toLocaleDateString(undefined, options);
+  };
 
   return (
     <>
