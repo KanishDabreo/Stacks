@@ -17,22 +17,23 @@ import { getUser } from '../../utils/userAuth';
 
 const mdTheme = createTheme();
 
-const user = getUser();
-
 function DashboardContent() {
-  const [ user, setUser ] = useState({});
+  const user = getUser();
+  //const [ user, setUser ] = useState({});
   const { count, setCount } = useContext(Context);
   const [ expenses, setExpenses ] = useState([]);
   const navigate = useNavigate();
+  //const navigate = useNavigate();
+  //console.log(count);
 
-  useEffect(() => {
-    const userString = localStorage.getItem("userSession")
-    if (!userString) {
-      navigate("/login");
-    }
-    const userObject = JSON.parse(userString);
-    setUser(userObject);
-  }, [navigate])
+  // useEffect(() => {
+  //   const userString = localStorage.getItem("userSession")
+  //   if (!userString) {
+  //     navigate("/login");
+  //   }
+  //   const userObject = JSON.parse(userString);
+  //   setUser(userObject);
+  // }, [navigate])
 
   useEffect(() => {
     if (user.id) {
