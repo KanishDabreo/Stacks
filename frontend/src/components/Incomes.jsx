@@ -68,14 +68,17 @@ export default function Income(props) {
               <Form.Label>Type</Form.Label>
               <Form.Select defaultValue="Choose...">
                 <option>Select...</option>
-                <option value="1">Employment</option>
-                <option value="2">Investment</option>
+                <option value="1">Salary</option>
+                <option value="2">Freelance</option>
+                <option value="3">Commission</option>
                 <option value="3">Grant</option>
                 <option value="4">scholarship</option>
-                <option value="5">Rental Income</option>
-                <option value="6">Freelance</option>
-                <option value="7">Gift</option>
-                <option value="8">Other</option>
+                <option value="5">Interest</option>
+                <option value="6">Investment</option>
+                <option value="7">Pocket Money</option>
+                <option value="8">Pension</option>
+                <option value="9">Gift</option>
+                <option value="10">Other</option>
               </Form.Select>
             </Form.Group>
             <Form.Group as={Col} sm={3} controlId="formGridCity">

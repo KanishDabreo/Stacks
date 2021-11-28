@@ -63,8 +63,8 @@ export default function Income() {
           ))}
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more income
+      <Link color="primary" href="/expenses" onClick={preventDefault} sx={{ mt: 3 }}>
+        Add more income
       </Link>
     </>
   );

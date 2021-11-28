@@ -67,8 +67,8 @@ export default function Expenses() {
             <TableCell align="right">Total Amount</TableCell>
           </Table>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more expenses
+      <Link color="primary" href="/expenses" onClick={preventDefault} sx={{ mt: 3 }}>
+        Add more expenses
       </Link>
     </>
   );

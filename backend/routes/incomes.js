@@ -1,9 +1,9 @@
 const express = require('express');
 const incomes = express.Router();
 
-//access all income streams
 module.exports = (db) => {
-
+  
+  //access all income streams
   incomes.get('/', (req, res) => {
     const user_id = req.body;
     console.log(req.body);
@@ -21,7 +21,7 @@ module.exports = (db) => {
 
   incomes.get('/:user_id', (req, res) => {
     const user_id = req.params.user_id;
-    db.query(`SELECT *, income.income_desc AS income_desc, income_type.income_desc AS income_type FROM income JOIN income_type ON income_type.id = income.income_type_id WHERE user_id = $1 ORDER BY date_created DESC;`, [user_id])
+    db.query(`SELECT *, incomes.income_desc AS income_desc, income_type_id.income_desc AS income_type FROM income JOIN income_type ON income_type.id = income.income_type_id WHERE user_id = $1 ORDER BY date_created DESC;`, [user_id])
     .then(data => {
       const incomes = data.rows;
       res.json({ incomes })
@@ -31,6 +31,21 @@ module.exports = (db) => {
         .status(500)
         .json({ error: err.message });
     });
+  });
+
+  incomes.post('/', async (req, res) => {
+    const {user_id, incomeAmt, incomeType, incomeDate} = req.body;
+    console.log(user_id, incomeAmt, incomeType, incomeDate);
+      // income (date_created, income_type_id, income_desc, income_amt, user_id)
+    let queryString = `INSERT INTO incomes (date_created, income_amt, user_id, income_type_id) VALUES ($1, $2, $3, $4) RETURNING *`;
+    let queryParams = [incomeDate, incomeAmt, user_id, incomeType];
+    db.query(queryString, queryParams)
+      .then(() => {
+        res.status(200).json({success: true});
+      })
+      .catch((err) => {
+        res.send(err);
+      })
   });
 
   incomes.get('/:income_id', function(req, res) {
