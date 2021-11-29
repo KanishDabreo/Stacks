@@ -7,14 +7,14 @@ import { AiFillFacebook, AiFillLinkedin, AiFillTwitterSquare } from 'react-icons
 
 export default function Profile(props) {
   const user = getUser();
-  const userId = user.id;
+
   return (
       <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
           <div className="card p-4">
             <div className="profile-image d-flex flex-column justify-content-center align-items-center">   
-            <div className="avatar-img"><img src="./avatar.png" height="200" width="200" /></div> 
-            <span className="name mt-3">Bob Cool{userId.name}</span> 
-            <span className="idd">@bob.cool{userId.email}</span>
+            <div className="profile-avatar-img"><img src="./avatar.png" height="200" width="200" /></div> 
+            <span className="profile-name mt-3">{user.name}</span> 
+            <span className="idd">{user.email}</span>
             </div>
                 <br/> <br/> <br/> <br/>
                 <div className="d-flex flex-row justify-content-center align-items-center mt-3"> <span className="number">10699   
@@ -22,7 +22,6 @@ export default function Profile(props) {
                 </span> 
                 </div>
                 <div className="d-flex flex-row justify-content-center align-items-center gap-2">   
-                  {/* <span className="idd1">Account Number: Oxc4c16a645_b21a</span>  */}
                   <span><i className="fa fa-copy"></i></span>
                 </div>
                 <div className=" d-flex flex-row justify-content-center align-items-center mt-2"> 
@@ -48,11 +47,11 @@ export default function Profile(props) {
               <h1> User Profile</h1>
               <div class="row">
                   <div class="bio-row">
-                      <p><span>First Name </span>: Bob</p>
+                      <p><span>Full Name </span>: {user.name}</p>
                   </div>
-                  <div class="bio-row">
+                  {/* <div class="bio-row">
                       <p><span>Last Name </span>: Cool</p>
-                  </div>
+                  </div> */}
                   <div class="bio-row">
                       <p><span>Country </span>: Canada</p>
                   </div>
@@ -63,7 +62,7 @@ export default function Profile(props) {
                       <p><span>Occupation </span>: Web Designer</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Email </span>: bob.cool@gmail.com{userId.email}</p>
+                      <p><span>Email </span>: {user.email}</p>
                   </div>
                   <div class="bio-row">
                       <p><span>Mobile </span>: (416) 123-4567</p>

@@ -20,7 +20,7 @@ body {
   transition: all 0.5s
 }
 
-.avatar-img {
+.profile-avatar-img {
   background-color: white
 }
 
@@ -35,7 +35,7 @@ body {
   color: #2dd577;
 }
 
-.name {
+.profile-name {
   font-size: 22px;
   font-weight: bold
 }
@@ -85,7 +85,7 @@ hr .new1 {
 
 .join {
   font-size: 14px;
-  color: #a0a0a0;
+  color: #0d0c3e;
   font-weight: bold
 }
 .userCards {
@@ -98,8 +98,8 @@ hr .new1 {
   background-color: #ccc
 }
 .bio-graph-heading {
-  margin-top: 100px;
-  background: #fde398;
+  margin-top: 20px;
+  background: white;
   color: white;
   text-align: center;
   font-style: italic;
