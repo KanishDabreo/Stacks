@@ -45,7 +45,7 @@ const data = [
     description: [
       'Add family members',
       'Create Groups',
-      'Help center access',
+      'Advance Financial Advices',
       'Phone & email support',
     ],
     buttonText: 'Contact us',
@@ -75,7 +75,7 @@ export default function PricingContent() {
           Pricing and Plans
         </Typography>
         <Typography variant="h5" align="center" color="text.secondary" component="p">
-          Go beyond Stacks. Choose a plan to ensure that everything you spend is clear and you can reach you financial goals.
+          Go beyond Stacks. Choose a plan to ensure that everything you spend is clear and you can reach your financial goals.
         </Typography>
       </Container>
       <Container maxWidth="md" component="main">
