@@ -146,6 +146,17 @@ function DashboardContent() {
                     {formatter.format(totalIncome)}
                   </Typography>
                   <TotalIncome income={income}/>
+                    height: 740,
+                  }}
+                >
+                    <Title>Total Expenses</Title>
+                    <Typography component="p" variant="h4">
+                      $ {withCommas(totalExpenses)}
+                      <Typography color="text.secondary" sx={{ flex: 1 }}>
+                        {date}
+                      </Typography>
+                    </Typography>
+                   <Doughnut expenses={expenses}/>
                 </Paper>
               </Grid> */}
                {/* Chart for Expenses */}
