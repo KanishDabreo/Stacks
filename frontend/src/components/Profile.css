@@ -16,19 +16,19 @@ body {
   transition: all 0.5s
 }
 
-.image img {
+.profile-image img {
   transition: all 0.5s
 }
 
-.profile-img {
+.avatar-img {
   background-color: white
 }
 
-.card:hover .image img {
+.card:hover .profile-image img {
   transform: scale(1.5)
 }
 
-.profilebtn {
+.profile-btn {
   height: 140px;
   width: 140px;
   border-radius: 50%;
@@ -60,7 +60,7 @@ body {
   color: black
 }
 
-.btn1 {
+.update-profile-button {
   height: 40px;
   width: 150px;
   border: none;

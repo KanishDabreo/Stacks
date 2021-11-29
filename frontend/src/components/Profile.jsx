@@ -11,8 +11,8 @@ export default function Profile(props) {
   return (
       <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
           <div className="card p-4">
-            <div className="image d-flex flex-column justify-content-center align-items-center">   
-            <article className="profile-img"><img src="./avatar.png" height="200" width="200" /></article> 
+            <div className="profile-image d-flex flex-column justify-content-center align-items-center">   
+            <div className="avatar-img"><img src="./avatar.png" height="200" width="200" /></div> 
             <span className="name mt-3">Bob Cool{userId.name}</span> 
             <span className="idd">@bob.cool{userId.email}</span>
             </div>
@@ -26,7 +26,7 @@ export default function Profile(props) {
                   <span><i className="fa fa-copy"></i></span>
                 </div>
                 <div className=" d-flex flex-row justify-content-center align-items-center mt-2"> 
-                <button className="btn1">Update Profile</button> 
+                <button className="update-profile-button">Update Profile</button> 
                 </div>
                 <div className="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                   <span><i className="fa fa-twitter"><AiFillTwitterSquare/></i></span> 
