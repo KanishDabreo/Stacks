@@ -9,7 +9,7 @@
   top: 0;
   height: 100vh;
   background-color: #2dd577;
-  position: absolute;
+  position: fixed;
   z-index: 999;
 }
 

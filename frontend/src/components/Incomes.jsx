@@ -51,12 +51,12 @@ export default function Income(props) {
   
   return (
     <Card style={{padding:"25px"}}>
-      <h4>Please enter your income details</h4>
-            <Form.Group as={Col} sm={15} controlId="formGridCity">
+      <h4>Enter your income:</h4>
+            <Form.Group as={Col} sm={5} controlId="formGridCity">
               <Form.Label>Amount</Form.Label>
                 <Form.Control type="text" placeholder="ex. 1000" value={incomeAmt} onChange={(event) => setincomeAmt(event.target.value)}/>
             </Form.Group>
-            <Form.Group as={Col} sm={15} controlId="formGridState" value={incomeType} onChange={(event) => setincomeType(event.target.value)}>
+            <Form.Group as={Col} sm={5} controlId="formGridState" value={incomeType} onChange={(event) => setincomeType(event.target.value)}>
               <Form.Label>Type</Form.Label>
               <Form.Select defaultValue="Choose...">
                 <option>Select...</option>
@@ -73,7 +73,7 @@ export default function Income(props) {
                 <option value="10">Other</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group as={Col} sm={15} controlId="formGridCity">
+            <Form.Group as={Col} sm={5} controlId="formGridCity">
               <Form.Label>Date</Form.Label>
               <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={incomeDate} onChange={(event) => setincomeDate(event.target.value)}/>
             </Form.Group>
