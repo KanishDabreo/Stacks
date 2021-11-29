@@ -8,26 +8,26 @@ import { AiFillFacebook, AiFillLinkedin, AiFillTwitterSquare } from 'react-icons
 
 export default function Profile(props) {
   const user = getUser();
+  const userId = user.id;
   return (
       <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
           <div className="card p-4">
             <div className="image d-flex flex-column justify-content-center align-items-center">   
             <button className="profile-img"><img src="./avatar.png" height="200" width="200" /></button> 
-            <span className="name mt-3">Bob Cool</span> 
-            <span className="idd">bob.cool@gmail.com</span>
-            {/* <span className="idd">notifications <BsToggleOn/></span> */}
+            <span className="name mt-3">Bob Cool{userId.name}</span> 
+            <span className="idd">@bob.cool{userId.email}</span>
             </div>
-                <div className=" d-flex flex-row justify-content-center align-items-center mt-2"> 
-                <button className="btn1">Update Profile</button> 
-                </div>
                 <div className="d-flex flex-row justify-content-center align-items-center mt-3"> <span className="number">10699   
                 <span className="follow">:   Points Earned   <FaMedal/></span>
                 </span> 
                 </div>
                 <div className="d-flex flex-row justify-content-center align-items-center gap-2">   
                 <br/>
-                  <span className="idd1">Account Number: Oxc4c16a645_b21a</span> 
+                  {/* <span className="idd1">Account Number: Oxc4c16a645_b21a</span>  */}
                   <span><i className="fa fa-copy"></i></span>
+                </div>
+                <div className=" d-flex flex-row justify-content-center align-items-center mt-2"> 
+                <button className="btn1">Update Profile</button> 
                 </div>
                 <div className="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                   <span><i className="fa fa-twitter"><AiFillTwitterSquare/></i></span> 
@@ -36,7 +36,7 @@ export default function Profile(props) {
                   <span><i className="fa fa-linkedin"><AiFillLinkedin/></i></span> 
                 </div>
                 <div className=" px-2 rounded mt-4 date ">
-                  <span className="join">Joined May,2021</span> 
+                  <span className="join">Joined January,2021</span> 
                </div>
           </div>
           <div class="panel">
@@ -64,13 +64,16 @@ export default function Profile(props) {
                       <p><span>Occupation </span>: Web Designer</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Email </span>: bob.cool@gmail.com</p>
+                      <p><span>Email </span>: bob.cool@gmail.com{userId.email}</p>
                   </div>
                   <div class="bio-row">
                       <p><span>Mobile </span>: (416) 123-4567</p>
                   </div>
                   <div class="bio-row">
                       <p><span>Phone </span>: (416) 765-4321</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Account #</span>: Oxc4c16a645_b21a</p>
                   </div>
                   <div class="bio-row">
                       <p><span>Notifications</span>:       <BsToggleOn/></p>
