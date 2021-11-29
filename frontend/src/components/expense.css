@@ -10,6 +10,13 @@
 
 .submit-button-container .col-sm-5 {
   margin-top: 38px;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
 }
 
 .count {
