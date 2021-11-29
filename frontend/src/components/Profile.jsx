@@ -17,12 +17,12 @@ export default function Profile(props) {
             <span className="name mt-3">Bob Cool{userId.name}</span> 
             <span className="idd">@bob.cool{userId.email}</span>
             </div>
+                <br/> <br/> <br/> <br/>
                 <div className="d-flex flex-row justify-content-center align-items-center mt-3"> <span className="number">10699   
                 <span className="follow">:   Points Earned   <FaMedal/></span>
                 </span> 
                 </div>
                 <div className="d-flex flex-row justify-content-center align-items-center gap-2">   
-                <br/>
                   {/* <span className="idd1">Account Number: Oxc4c16a645_b21a</span>  */}
                   <span><i className="fa fa-copy"></i></span>
                 </div>
@@ -46,7 +46,7 @@ export default function Profile(props) {
             </div>
           </div>
           <div class="panel-body bio-graph-info">
-              <h1>User Profile</h1>
+              <h1> User Profile</h1>
               <div class="row">
                   <div class="bio-row">
                       <p><span>First Name </span>: Bob</p>
@@ -76,7 +76,11 @@ export default function Profile(props) {
                       <p><span>Account #</span>: Oxc4c16a645_b21a</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Notifications</span>:       <BsToggleOn/></p>
+                      {/* <p><span>Notifications</span>:       <BsToggleOn/></p> */}
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitches"/>
+                        <label class="custom-control-label" for="customSwitches">Notifications</label>
+                      </div>
                   </div>
               </div>
           </div>
