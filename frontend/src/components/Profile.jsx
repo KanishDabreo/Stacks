@@ -12,7 +12,7 @@ export default function Profile(props) {
       <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
           <div className="card p-4">
             <div className="profile-image d-flex flex-column justify-content-center align-items-center">   
-            <div className="profile-avatar-img"><img src="./avatar.png" height="200" width="200" /></div> 
+            <div className="profile-avatar-img"><img src={user.avatar_url} height="200" width="200" /></div> 
             <span className="profile-name mt-3">{user.name}</span> 
             <span className="idd">{user.email}</span>
             </div>
