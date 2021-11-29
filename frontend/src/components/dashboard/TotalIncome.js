@@ -17,7 +17,7 @@ export default function totalIncome({income}) {
             dataKey="value"
             label={renderLabel}
             innerRadius={25}
-            outerRadius={100}
+            outerRadius={80}
           />
         </PieChart>
     </ResponsiveContainer>

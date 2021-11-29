@@ -15,14 +15,14 @@ import axios from 'axios';
 import { getUser } from '../../utils/userAuth';
 import Title from './Title';
 import Typography from '@mui/material/Typography';
-import TotalIncome from './TotalIncome';
+// import TotalIncome from './TotalIncome';
 
 const mdTheme = createTheme();
 
 function DashboardContent() {
   const user = getUser();
   const [ expenses, setExpenses ] = useState([]);
-  const [ income, setIncome ] = useState([]);
+  // const [ income, setIncome ] = useState([]);
   const [ totalExpenses, setTotalExpenses ] = useState('');
   const [ totalIncome, setTotalIncome ] = useState('');
   const userId = user.id;
@@ -78,32 +78,32 @@ function DashboardContent() {
     expensesData();
   }, [])
 
-  useEffect(() => {
-    const incomeData = async () => {      
-      const COLORS = ["#FADBD8", "#EBDEF0", "#A3E4D7", "#ABEBC6", "#F8BBD0",  "#C5CAE9", "#80DEEA", "#BBDEFB", "#FFF9C4", "#DCEDC8", "#FFCDD2"]
-      const incomeURL = `http://localhost:8080/api/incomes/type/${userId}`;
-      try {
-        const { data } = await axios.get(incomeURL);
-        console.log('income');
-        console.log("+++++++++++", data);
+  // useEffect(() => {
+  //   const incomeData = async () => {      
+  //     const COLORS = ["#FADBD8", "#EBDEF0", "#A3E4D7", "#ABEBC6", "#F8BBD0",  "#C5CAE9", "#80DEEA", "#BBDEFB", "#FFF9C4", "#DCEDC8", "#FFCDD2"]
+  //     const incomeURL = `http://localhost:8080/api/incomes/type/${userId}`;
+  //     try {
+  //       const { data } = await axios.get(incomeURL);
+  //       console.log('income');
+  //       console.log("+++++++++++", data);
 
-        function formatRow(row, index) {
-          const res = {name: row.income_name, value: Number(row.total), fill: COLORS[index]};
-          return res;
-        }
+  //       function formatRow(row, index) {
+  //         const res = {name: row.income_name, value: Number(row.total), fill: COLORS[index]};
+  //         return res;
+  //       }
       
-        const format = (rows, index) => {
-          const res = rows.map(formatRow, index);
-          return res;
-        };
+  //       const format = (rows, index) => {
+  //         const res = rows.map(formatRow, index);
+  //         return res;
+  //       };
 
-        setIncome([...format(data.incomes)]);
-      } catch (error) {
-        console.log("error: =========", error );
-      }
-    }
-    incomeData();
-  }, [])
+  //       setIncome([...format(data.incomes)]);
+  //     } catch (error) {
+  //       console.log("error: =========", error );
+  //     }
+  //   }
+  //   incomeData();
+  // }, [])
 
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   let today  = new Date();
@@ -129,14 +129,15 @@ function DashboardContent() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>           
-            <Grid container spacing={30}>
-              {/* Chart for Incomes */}
+            <Grid container spacing={100}>
+              {/* Chart for Incomes
               <Grid item xs={6} md={4} lg={3}>
                 <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
+                    justifyContent: 'center',
                     height: 450,
                     width: 350
                   }}>
@@ -146,35 +147,41 @@ function DashboardContent() {
                   </Typography>
                   <TotalIncome income={income}/>
                 </Paper>
-              </Grid>
+              </Grid> */}
                {/* Chart for Expenses */}
-               <Grid item xs={6} md={4} lg={3}>
+               <Grid item xs={12} md={8} lg={4} >
                 <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     height: 450,
-                    width: 350
-                  }}>
-                  <Title>Total Expenses</Title>
-                  <Typography component="p" variant="h5">
-                    {formatter.format(totalExpenses)}
-                  </Typography>
+                    width: 850
+                  }}>                  
                   <Doughnut expenses={expenses}/>
               </Paper>
               </Grid>        
               {/* Recent Net Income */}
-              <Grid item xs={6} md={4} lg={3}>
+              <Grid item xs={6} md={4} lg={3} >
                 <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     height: 450,
-                    width: 350
+                    width: 350,
+                    textAlign: 'center'
                   }}>
                   <Amount totalExpenses={totalExpenses} totalIncome={totalIncome} />
+                  <hr/>
+                  <Typography component="p" variant="h5">
+                    <Title>Total Income</Title>
+                    {formatter.format(totalIncome)}                 
+                    <hr/>
+                    <Title>Total Expenses</Title>
+                    {formatter.format(totalExpenses)}
+                  </Typography>
+                  {/* <TotalIncome income={income}/> */}
                 </Paper>
               </Grid>                 
             </Grid>

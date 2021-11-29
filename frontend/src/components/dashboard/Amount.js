@@ -27,7 +27,7 @@ export default function Deposits({totalIncome, totalExpenses}) {
         {formatter.format(netIncome)}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
-        {date}
+        on {date}
       </Typography>
     </React.Fragment>
   );

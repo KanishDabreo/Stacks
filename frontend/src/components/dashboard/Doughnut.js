@@ -16,8 +16,8 @@ export default function Doughnut({expenses}) {
             data={expenses}
             dataKey="value"
             label={renderLabel}
-            innerRadius={25}
-            outerRadius={100}
+            innerRadius={35}
+            outerRadius={150}
           />
         </PieChart>
     </ResponsiveContainer>
