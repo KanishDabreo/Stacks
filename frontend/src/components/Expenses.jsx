@@ -59,7 +59,7 @@ export default function Expenses(props) {
       <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }} spacing={3}>
         <Grid item xs={3}>
           <Card style={{padding:"25px"}}>
-            <h4>Enter expense:</h4>
+            <h4>Enter your expense:</h4>
             <Form.Group as={Col} sm={5} controlId="formGridCity">
               <Form.Label>Amount</Form.Label>
                 <Form.Control type="text" placeholder="ex. 1000" value={expAmt} onChange={(event) => setExpAmt(event.target.value)}/>
