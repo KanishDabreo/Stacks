@@ -38,7 +38,7 @@ export default function Sidebar({isLoggedIn}) {
           onClose={handleTooltipClose} 
           onOpen={handleTooltipOpen}    
           title="Profile">
-          <Link to="/"><h2><FaUser /></h2></Link>
+          <Link to="#"><h2><FaUser /></h2></Link>
         </Tooltip>
         <Tooltip
           className="sidebar-item"
@@ -59,7 +59,7 @@ export default function Sidebar({isLoggedIn}) {
           onClose={handleTooltipClose} 
           onOpen={handleTooltipOpen}    
           title="Maps">
-          <Link to="/"><h2><RiRoadMapFill /></h2></Link>
+          <Link to="#"><h2><RiRoadMapFill /></h2></Link>
         </Tooltip>
       </div>
     )
