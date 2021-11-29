@@ -10,6 +10,12 @@ import { useNavigate } from 'react-router-dom';
 import Context from '../app-context';
 import Income from './Incomes';
 import { getUser } from '../utils/userAuth';
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 export default function Expenses(props) {
   const [ expAmt, setExpAmt ] = useState("");
@@ -47,17 +53,18 @@ export default function Expenses(props) {
       console.log("error: ++++++++", 'There already exists an account with this name or email');
     }
   };
-  
+
   return (
     <div className="expense-page">
-      <div className="expense-container">
-      <h4>Please enter your expense details: </h4>
-        <Row className="mb-3">
-            <Form.Group as={Col} sm={3} controlId="formGridCity">
+      <Grid container spacing={3}>
+        <Grid item xs={4}>
+          <Card style={{padding:"25px"}}>
+            <h4>Please enter your expense details: </h4>
+            <Form.Group as={Col} sm={5} controlId="formGridCity">
               <Form.Label>Amount</Form.Label>
                 <Form.Control type="text" placeholder="ex. 1000" value={expAmt} onChange={(event) => setExpAmt(event.target.value)}/>
             </Form.Group>
-            <Form.Group as={Col} sm={3} controlId="formGridState" value={expType} onChange={(event) => setExpType(event.target.value)}>
+            <Form.Group as={Col} sm={5} controlId="formGridState" value={expType} onChange={(event) => setExpType(event.target.value)}>
               <Form.Label>Type</Form.Label>
               <Form.Select defaultValue="Choose...">
                 <option>Select...</option>
@@ -73,17 +80,22 @@ export default function Expenses(props) {
                 <option value="9">Other</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group as={Col} sm={3} controlId="formGridCity">
+            <Form.Group as={Col} sm={5} controlId="formGridCity">
               <Form.Label>Date</Form.Label>
               <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={expDate} onChange={(event) => setExpDate(event.target.value)}/>
             </Form.Group>
             <div className="count">
               {count}{setCount}
             </div>
-        </Row>
-        <Button className="submit-button" variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
-        <Income/>
-      </div>
+            <div className="submit-button-container">
+              <Button as={Col} sm={5} variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
+            </div>
+          </Card>
+        </Grid>
+        <Grid item xs={4}>
+          <Income/>
+        </Grid>
+      </Grid> 
     </div>
   )
 }

@@ -1,8 +1,6 @@
 import React from 'react';
 import './income.css';
-
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -10,7 +8,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Context from '../app-context';
 import { getUser } from '../utils/userAuth';
-
+import Card from '@mui/material/Card';
 
 export default function Income(props) {
   const [ incomeAmt, setincomeAmt ] = useState("");
@@ -52,15 +50,13 @@ export default function Income(props) {
   };
   
   return (
-    <div className="income-page">
-      <div className="income-container">
+    <Card style={{padding:"25px"}}>
       <h4>Please enter your income details: </h4>
-        <Row className="mb-3">
-            <Form.Group as={Col} sm={3} controlId="formGridCity">
+            <Form.Group as={Col} sm={5} controlId="formGridCity">
               <Form.Label>Amount</Form.Label>
                 <Form.Control type="text" placeholder="ex. 1000" value={incomeAmt} onChange={(event) => setincomeAmt(event.target.value)}/>
             </Form.Group>
-            <Form.Group as={Col} sm={3} controlId="formGridState" value={incomeType} onChange={(event) => setincomeType(event.target.value)}>
+            <Form.Group as={Col} sm={5} controlId="formGridState" value={incomeType} onChange={(event) => setincomeType(event.target.value)}>
               <Form.Label>Type</Form.Label>
               <Form.Select defaultValue="Choose...">
                 <option>Select...</option>
@@ -77,17 +73,17 @@ export default function Income(props) {
                 <option value="10">Other</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group as={Col} sm={3} controlId="formGridCity">
+            <Form.Group as={Col} sm={5} controlId="formGridCity">
               <Form.Label>Date</Form.Label>
               <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={incomeDate} onChange={(event) => setincomeDate(event.target.value)}/>
             </Form.Group>
             <div className="count">
               {count}{setCount}
             </div>
-        </Row>
-        <Button className="submit-button" variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
-      </div>
-    </div>
+            <div className="submit-button-container">
+              <Button as={Col} sm={5} variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
+            </div>
+    </Card>
   )
 }
 

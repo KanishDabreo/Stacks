@@ -111,7 +111,7 @@ function DashboardContent() {
                 >
                     <Title>Total Expenses</Title>
                     <Typography component="p" variant="h4">
-                      $ {withCommas(totalExpenses)} 
+                      $ {withCommas(totalExpenses)}
                       <Typography color="text.secondary" sx={{ flex: 1 }}>
                         {date}
                       </Typography>

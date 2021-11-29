@@ -4,12 +4,12 @@
 }
 
 /*this affects each row inside the expense-container*/
-.expense-container .col-sm-3 {
-  margin-top: 25px;
+.expense-page .col-sm-5 {
+  margin-top: 30px;
 }
 
-.submit-button {
-  margin-top: 13px;
+.submit-button-container .col-sm-5 {
+  margin-top: 38px;
 }
 
 .count {
