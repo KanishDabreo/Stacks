@@ -21,15 +21,14 @@ body {
 }
 
 .profile-img {
-  background-color: #0d0c3e
+  background-color: white
 }
-
 
 .card:hover .image img {
   transform: scale(1.5)
 }
 
-.btn {
+.profilebtn {
   height: 140px;
   width: 140px;
   border-radius: 50%;

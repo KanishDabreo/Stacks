@@ -2,7 +2,6 @@ import React from 'react'
 import { getUser } from '../utils/userAuth';
 // import AvatarEditor from 'react-avatar-editor'
 import "./Profile.css";
-import { BsToggleOn } from "react-icons/bs";
 import { FaMedal, FaInstagramSquare } from 'react-icons/fa';
 import { AiFillFacebook, AiFillLinkedin, AiFillTwitterSquare } from 'react-icons/ai';
 
@@ -13,7 +12,7 @@ export default function Profile(props) {
       <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
           <div className="card p-4">
             <div className="image d-flex flex-column justify-content-center align-items-center">   
-            <button className="profile-img"><img src="./avatar.png" height="200" width="200" /></button> 
+            <article className="profile-img"><img src="./avatar.png" height="200" width="200" /></article> 
             <span className="name mt-3">Bob Cool{userId.name}</span> 
             <span className="idd">@bob.cool{userId.email}</span>
             </div>
@@ -76,10 +75,9 @@ export default function Profile(props) {
                       <p><span>Account #</span>: Oxc4c16a645_b21a</p>
                   </div>
                   <div class="bio-row">
-                      {/* <p><span>Notifications</span>:       <BsToggleOn/></p> */}
                       <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="customSwitches"/>
-                        <label class="custom-control-label" for="customSwitches">Notifications</label>
+                        <label class="custom-control-label" for="customSwitches">   Notifications</label>
                       </div>
                   </div>
               </div>
