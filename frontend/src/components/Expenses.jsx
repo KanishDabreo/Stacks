@@ -56,7 +56,7 @@ export default function Expenses(props) {
 
   return (
     <div className="expense-page">
-      <Grid container spacing={3}>
+      <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }} spacing={3}>
         <Grid item xs={4}>
           <Card style={{padding:"25px"}}>
             <h4>Please enter your expense details: </h4>
