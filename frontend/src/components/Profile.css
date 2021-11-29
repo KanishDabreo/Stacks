@@ -92,8 +92,44 @@ hr .new1 {
 .userCards {
   height: 150px;
   width: auto;
+  float: right;
 }
 
 .date {
   background-color: #ccc
+}
+.bio-graph-heading {
+  margin-top: 100px;
+  background: #fde398;
+  color: white;
+  text-align: center;
+  font-style: italic;
+  padding: 40px 110px;
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.bio-graph-info {
+  color: #89817e;
+}
+
+.bio-graph-info h1 {
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0 0 20px;
+  border: 1px solid
+}
+
+.bio-row {
+  width: 50%;
+  float: left;
+  margin-bottom: 10px;
+  padding:0 15px;
+}
+
+.bio-row p span {
+  width: 100px;
+  display: inline-block;
 }

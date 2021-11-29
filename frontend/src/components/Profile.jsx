@@ -11,14 +11,11 @@ export default function Profile(props) {
   return (
       <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
           <div className="card p-4">
-          <div className="userCards">
-                <img src="./usercards.png" alt="userCards" style={{height: 150}}/>
-              </div>
             <div className="image d-flex flex-column justify-content-center align-items-center">   
             <button className="profile-img"><img src="./avatar.png" height="200" width="200" /></button> 
             <span className="name mt-3">Bob Cool</span> 
             <span className="idd">bob.cool@gmail.com</span>
-            <span className="idd">notifications <BsToggleOn/></span>
+            {/* <span className="idd">notifications <BsToggleOn/></span> */}
             </div>
                 <div className=" d-flex flex-row justify-content-center align-items-center mt-2"> 
                 <button className="btn1">Update Profile</button> 
@@ -42,6 +39,45 @@ export default function Profile(props) {
                   <span className="join">Joined May,2021</span> 
                </div>
           </div>
+          <div class="panel">
+          <div class="bio-graph-heading">
+            <div className="userCards">
+              <img src="./usercards.png" alt="userCards" style={{height: 100}}/>
+            </div>
+          </div>
+          <div class="panel-body bio-graph-info">
+              <h1>User Profile</h1>
+              <div class="row">
+                  <div class="bio-row">
+                      <p><span>First Name </span>: Bob</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Last Name </span>: Cool</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Country </span>: Canada</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Birthday</span>: 13 July 1983</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Occupation </span>: Web Designer</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Email </span>: bob.cool@gmail.com</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Mobile </span>: (416) 123-4567</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Phone </span>: (416) 765-4321</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Notifications</span>:       <BsToggleOn/></p>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>  
   )
 };
