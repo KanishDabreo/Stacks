@@ -2,7 +2,7 @@ import React from 'react';
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 import { getUser } from '../../utils/userAuth';
 
-export default function Doughnut({expenses}) {
+export default function totalIncome({income}) {
   const user = getUser();
 
   const renderLabel = function(entry) {
@@ -13,7 +13,7 @@ export default function Doughnut({expenses}) {
     <ResponsiveContainer>
         <PieChart width={200} height={200}>
           <Pie
-            data={expenses}
+            data={income}
             dataKey="value"
             label={renderLabel}
             innerRadius={25}

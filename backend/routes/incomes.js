@@ -70,5 +70,19 @@ module.exports = (db) => {
       });
   });
 
+  incomes.get("/type/:user_id", (req, res) => {
+    let queryString = `SELECT income_type.income_desc AS income_name, SUM(income.income_amt) AS total FROM income JOIN income_type ON income_type.id = income.income_type_id WHERE user_id = $1 GROUP BY income_name;`;
+    db.query(queryString, [req.params.user_id])
+      .then(data => {
+        const incomes = data.rows;
+        res.json({ incomes })
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500)
+           .json({ error: err.message });
+      });
+  });
+
   return incomes;
 }

@@ -4,11 +4,13 @@ import Typography from '@mui/material/Typography';
 import Title from './Title';
 
 export default function Deposits({totalIncome, totalExpenses}) {
-  function withCommas(num) {
-    return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-  }
-  const diff = totalIncome - totalExpenses;
-  const netIncome = diff > 0 ? "$ " + withCommas(diff) : "- $ " + withCommas(diff*-1);
+  
+  let formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'CAD',
+  });
+
+  const netIncome = totalIncome - totalExpenses;
 
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   let today  = new Date();
@@ -22,16 +24,11 @@ export default function Deposits({totalIncome, totalExpenses}) {
     <React.Fragment>
       <Title>Net Income</Title>
       <Typography component="p" variant="h4">
-        {netIncome}
+        {formatter.format(netIncome)}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
         {date}
       </Typography>
-      <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          View statement
-        </Link>
-      </div>
     </React.Fragment>
   );
 }
