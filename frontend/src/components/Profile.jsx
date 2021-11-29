@@ -15,16 +15,16 @@ export default function Profile(props) {
                 <img src="./usercards.png" alt="userCards" style={{height: 150}}/>
               </div>
             <div className="image d-flex flex-column justify-content-center align-items-center">   
-            <button className="profile-img btn-secondary"><img src="./avatar.png" height="200" width="200" /></button> 
+            <button className="profile-img"><img src="./avatar.png" height="200" width="200" /></button> 
             <span className="name mt-3">Bob Cool</span> 
             <span className="idd">bob.cool@gmail.com</span>
             <span className="idd">notifications <BsToggleOn/></span>
             </div>
                 <div className=" d-flex flex-row justify-content-center align-items-center mt-2"> 
-                <button className="btn1 btn-dark">Update Profile</button> 
+                <button className="btn1">Update Profile</button> 
                 </div>
                 <div className="d-flex flex-row justify-content-center align-items-center mt-3"> <span className="number">10699   
-                <span className="follow">Points Earned   <FaMedal/></span>
+                <span className="follow">:   Points Earned   <FaMedal/></span>
                 </span> 
                 </div>
                 <div className="d-flex flex-row justify-content-center align-items-center gap-2">   

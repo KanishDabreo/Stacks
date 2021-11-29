@@ -38,7 +38,7 @@ export default function Sidebar({isLoggedIn}) {
           onClose={handleTooltipClose} 
           onOpen={handleTooltipOpen}    
           title="Profile">
-          <Link to="#"><h2><FaUser /></h2></Link>
+          <Link to="/profile"><h2><FaUser /></h2></Link>
         </Tooltip>
         <Tooltip
           className="sidebar-item"
