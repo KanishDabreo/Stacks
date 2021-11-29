@@ -28,7 +28,7 @@ function App() {
 
   return (
     <Context.Provider value={{count, setCount}} >
-    <div className="App">
+    <div className="app">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard"  element={<Dashboard />} />
@@ -39,10 +39,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/incomes" element={<Income />} />
       </Routes>
+
       <Navbar setIsLoggedIn={setIsLoggedIn} />
       <Sidebar isLoggedIn={isLoggedIn} />
       <Footer />
-    </div>
+      </div>
     </Context.Provider>
   );
 }

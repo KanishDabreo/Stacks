@@ -9,6 +9,7 @@
 }
 .logo {
   width: 10rem;
+  margin-right: 400px;
 }
 
 .login_register {
@@ -30,11 +31,13 @@ li a:hover {
   text-decoration: underline;
 }
 
-.ml-auto {
+/*.ml-auto {
   display: flex;
   justify-content: space-between;
-  width: 200px;
-}
+  width: 800px;
+}*/
+
+
 
 .user-name {
   font-size: 1.3rem;

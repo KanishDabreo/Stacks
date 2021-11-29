@@ -9,12 +9,14 @@
   top: 0;
   height: 100vh;
   background-color: #2dd577;
-  margin-right: 1rem;
+  position: absolute;
+  z-index: 999;
 }
 
 .sidebar-item {
   font-size: 2rem;
   margin-top: 3rem;
+  margin-top: 100px;
 }
 a {
   text-decoration: none;

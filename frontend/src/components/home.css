@@ -3,8 +3,8 @@
 }
 
 .homepage-logo {
-  height: 800px;
-  margin-left: 800px;
+  height: 680px;
+  margin-left: 870px;
   margin-top: 100px;
   position: relative;
 }
@@ -21,7 +21,7 @@
   font-size: 110px;
   font-weight: bolder;
   text-shadow: 5px 10px #bbbbbb;
-  line-height: 115px;
+  line-height: 105px;
 }
 
 .submit-button {
@@ -31,4 +31,5 @@
 .btn-lg {
   height: 75px;
   width:  495px;
+  margin-top: 30px;
 }

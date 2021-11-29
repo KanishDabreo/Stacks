@@ -51,15 +51,15 @@ export default function Sidebar({isLoggedIn}) {
           className="sidebar-item"
           onClose={handleTooltipClose} 
           onOpen={handleTooltipOpen}    
-          title="Maps">
-          <Link to="/"><h2><RiRoadMapFill /></h2></Link>
+          title="Add Expense/Income">
+          <Link to="/expenses"><h2><RiAddBoxFill /></h2></Link>
         </Tooltip>
         <Tooltip
           className="sidebar-item"
           onClose={handleTooltipClose} 
           onOpen={handleTooltipOpen}    
-          title="Add Expense/Income">
-          <Link to="/expenses"><h2><RiAddBoxFill /></h2></Link>
+          title="Maps">
+          <Link to="/"><h2><RiRoadMapFill /></h2></Link>
         </Tooltip>
       </div>
     )

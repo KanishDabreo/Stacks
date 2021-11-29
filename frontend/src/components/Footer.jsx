@@ -10,7 +10,7 @@ export default function Footer(props) {
       className="footer"
       component="footer"
       sx={{
-        py: 3,
+        py: 1,
         px: 2,
         mt: 'auto',
         backgroundColor: (theme) =>
@@ -19,9 +19,9 @@ export default function Footer(props) {
             : theme.palette.grey[800],
       }}
     >
-      <Container maxWidth="sm">
-        <Typography variant="body1">
-        © Stacks, Inc. 2021. We love our users!
+      <Container maxWidth="sm" className="footer-container">
+        <Typography variant="body1" align="center">
+        © Stacks, Inc. 2021.
         </Typography>
       </Container>
     </Box>  

@@ -4,11 +4,13 @@
   height: 80vh !important;
 }
 
-.button {
+/*.button {
   background-color: #2dd577 !important;
   color: white !important;
+  border: 0 !important;
 }
 
 .background-color-green {
   background-color: #2dd577 !important;
-}
+  border: none !important;
+}*/
