@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Context from '../app-context';
 import { getUser } from '../utils/userAuth';
 import Card from '@mui/material/Card';
+import IncLogo from './income-logo.png';
 
 export default function Income(props) {
   const [ incomeAmt, setincomeAmt ] = useState("");
@@ -52,37 +53,44 @@ export default function Income(props) {
   return (
     <Card style={{padding:"25px"}}>
       <h4>Enter your income:</h4>
-            <Form.Group as={Col} sm={5} controlId="formGridCity">
-              <Form.Label>Amount</Form.Label>
-                <Form.Control type="text" placeholder="ex. 1000" value={incomeAmt} onChange={(event) => setincomeAmt(event.target.value)}/>
-            </Form.Group>
-            <Form.Group as={Col} sm={5} controlId="formGridState" value={incomeType} onChange={(event) => setincomeType(event.target.value)}>
-              <Form.Label>Type</Form.Label>
-              <Form.Select defaultValue="Choose...">
-                <option>Select...</option>
-                <option value="1">Salary</option>
-                <option value="2">Freelance</option>
-                <option value="3">Commission</option>
-                <option value="3">Grant</option>
-                <option value="4">scholarship</option>
-                <option value="5">Interest</option>
-                <option value="6">Investment</option>
-                <option value="7">Pocket Money</option>
-                <option value="8">Pension</option>
-                <option value="9">Gift</option>
-                <option value="10">Other</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group as={Col} sm={5} controlId="formGridCity">
-              <Form.Label>Date</Form.Label>
-              <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={incomeDate} onChange={(event) => setincomeDate(event.target.value)}/>
-            </Form.Group>
-            <div className="count">
-              {count}{setCount}
-            </div>
-            <div className="submit-button-container">
-              <Button className="button" as={Col} sm={5} variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
-            </div>
+      <div className="form-container">
+        <div className="form">
+          <Form.Group as={Col} sm={15} controlId="formGridCity">
+            <Form.Label>Amount</Form.Label>
+              <Form.Control type="text" placeholder="ex. 1000" value={incomeAmt} onChange={(event) => setincomeAmt(event.target.value)}/>
+          </Form.Group>
+          <Form.Group as={Col} sm={15} controlId="formGridState" value={incomeType} onChange={(event) => setincomeType(event.target.value)}>
+            <Form.Label>Type</Form.Label>
+            <Form.Select defaultValue="Choose...">
+              <option>Select...</option>
+              <option value="1">Salary</option>
+              <option value="2">Freelance</option>
+              <option value="3">Commission</option>
+              <option value="3">Grant</option>
+              <option value="4">scholarship</option>
+              <option value="5">Interest</option>
+              <option value="6">Investment</option>
+              <option value="7">Pocket Money</option>
+              <option value="8">Pension</option>
+              <option value="9">Gift</option>
+              <option value="10">Other</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group as={Col} sm={15} controlId="formGridCity">
+            <Form.Label>Date</Form.Label>
+            <Form.Control type="date" placeholder="ex. YYYY/MM/DD" value={incomeDate} onChange={(event) => setincomeDate(event.target.value)}/>
+          </Form.Group>
+          <div className="count">
+            {count}{setCount}
+          </div>
+          <div className="submit-button-container">
+            <Button className="button" as={Col} sm={15} variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
+          </div>
+        </div>
+        <div className="inc-logo">
+          <img src={IncLogo} alt="income-logo" style={{height: 200}}/>
+        </div>
+      </div>
     </Card>
   )
 }
