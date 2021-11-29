@@ -53,7 +53,7 @@ function DashboardContent() {
 
   useEffect(() => {
     const expensesData = async () => {      
-      const COLORS = ["#FADBD8", "#EBDEF0", "#A3E4D7", "#ABEBC6", "#F8BBD0",  "#C5CAE9", "#80DEEA", "#BBDEFB", "#FFF9C4", "#DCEDC8", "#FFCDD2"]
+      const COLORS = ["#2ac754", "#16f50a", "#f2713a", "#006280", "#bd5a04",  "#d90e00", "#7e60b3", "#00baba", "#00ba95", "#b4ba00", "#ba009e"]
       const incomeURL = `http://localhost:8080/api/expenses/type/${userId}`;
       try {
         const { data } = await axios.get(incomeURL);
