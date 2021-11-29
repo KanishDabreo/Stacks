@@ -17,6 +17,8 @@
 }
 
 .exp-logo {
+  height: 100%;
+  width: 100%;
   margin-left: 615px;
   margin-top: 335px;
   position: absolute;
@@ -24,8 +26,15 @@
 }
 
 .inc-logo {
-  margin-left: 1230px;
+  height: 100%;
+  width: 100%;
+  margin-left: 1225px;
   margin-top: 330px;
   position: absolute;
   z-index: 999;
+}
+
+.expense-page {
+  width: 100%;
+  height: 100%;
 }
