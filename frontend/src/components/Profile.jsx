@@ -2,8 +2,8 @@ import React from 'react'
 import { getUser } from '../utils/userAuth';
 // import AvatarEditor from 'react-avatar-editor'
 import "./Profile.css";
-import { FaMedal, FaInstagramSquare } from 'react-icons/fa';
-import { AiFillFacebook, AiFillLinkedin, AiFillTwitterSquare } from 'react-icons/ai';
+// import { FaMedal, FaInstagramSquare } from 'react-icons/fa';
+// import { AiFillFacebook, AiFillLinkedin, AiFillTwitterSquare } from 'react-icons/ai';
 
 export default function Profile(props) {
   const user = getUser();
@@ -17,22 +17,22 @@ export default function Profile(props) {
             <span className="idd">{user.email}</span>
             </div>
                 <br/> <br/> <br/> <br/>
-                <div className="d-flex flex-row justify-content-center align-items-center mt-3"> <span className="number">10699   
+                {/* <div className="d-flex flex-row justify-content-center align-items-center mt-3"> <span className="number">10699   
                 <span className="follow">:   Points Earned   <FaMedal/></span>
                 </span> 
-                </div>
+                </div> */}
                 <div className="d-flex flex-row justify-content-center align-items-center gap-2">   
                   <span><i className="fa fa-copy"></i></span>
                 </div>
-                <div className=" d-flex flex-row justify-content-center align-items-center mt-2"> 
+                {/* <div className=" d-flex flex-row justify-content-center align-items-center mt-2"> 
                 <button className="update-profile-button">Update Profile</button> 
-                </div>
-                <div className="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+                </div> */}
+                {/* <div className="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                   <span><i className="fa fa-twitter"><AiFillTwitterSquare/></i></span> 
                   <span><i className="fa fa-facebook-f"><AiFillFacebook/></i></span> 
                   <span><i className="fa fa-instagram"></i><FaInstagramSquare/></span> 
                   <span><i className="fa fa-linkedin"><AiFillLinkedin/></i></span> 
-                </div>
+                </div> */}
                 <div className=" px-2 rounded mt-4 date ">
                   <span className="join">Joined January,2021</span> 
                </div>
@@ -71,7 +71,7 @@ export default function Profile(props) {
                       <p><span>Phone </span>: (416) 765-4321</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Account #</span>: Oxc4c16a645_b21a</p>
+                      <p><span>Account ID</span>: Oxc4c16a645_b21a</p>
                   </div>
                   <div class="bio-row">
                       <div class="custom-control custom-switch">
