@@ -16,6 +16,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import ExpLogo from './expense-logo.png';
+import IncLogo from './income-logo.png';
 
 export default function Expenses(props) {
   const [ expAmt, setExpAmt ] = useState("");
@@ -56,8 +58,14 @@ export default function Expenses(props) {
 
   return (
     <div className="expense-page">
+      <div className="exp-logo">
+        <img src={ExpLogo} alt="expense-logo" style={{height: 200}}/>
+      </div>
+      <div className="inc-logo">
+        <img src={IncLogo} alt="income-logo" style={{height: 200}}/>
+      </div>
       <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }} spacing={3}>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <Card style={{padding:"25px"}}>
             <h4>Enter your expense:</h4>
             <Form.Group as={Col} sm={5} controlId="formGridCity">
@@ -92,7 +100,7 @@ export default function Expenses(props) {
             </div>
           </Card>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <Income/>
         </Grid>
       </Grid> 

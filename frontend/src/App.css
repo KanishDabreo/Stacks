@@ -14,3 +14,9 @@
   background-color: #2dd577 !important;
   border: none !important;
 }
+
+.button:hover {
+  background-color: #2aaa61 !important;
+  color: white !important;
+  border: 0 !important;
+}

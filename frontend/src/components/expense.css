@@ -16,3 +16,16 @@
   color: white;
 }
 
+.exp-logo {
+  margin-left: 615px;
+  margin-top: 335px;
+  position: absolute;
+  z-index: 999;
+}
+
+.inc-logo {
+  margin-left: 1230px;
+  margin-top: 330px;
+  position: absolute;
+  z-index: 999;
+}
