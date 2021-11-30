@@ -21,7 +21,10 @@ export default function Profile(props) {
                 <div className="d-flex flex-row justify-content-center align-items-center gap-2">   
                   <span><i className="fa fa-copy"></i></span>
                 </div>
-                
+                <div class="custom-control custom-switch justify-content-center align-items-center">
+                        <input type="checkbox" class="custom-control-input" id="customSwitches"/>
+                        <label class="custom-control-label" for="customSwitches">   Notifications</label>
+                      </div>
                 <div className=" px-2 rounded mt-4 date ">
                   <span className="join">Joined January,2021</span> 
                </div>
@@ -34,7 +37,7 @@ export default function Profile(props) {
               <br/>
               <div class="row">
                   <div class="bio-row">
-                      <p><span>Full Name </span>: {user.name}</p>
+                      <p><span>Name </span>: {user.name}</p>
                   </div>
                   <div class="bio-row">
                       <p><span>Country </span>: Canada</p>
@@ -43,7 +46,7 @@ export default function Profile(props) {
                       <p><span>Birthday</span>: 13 July 1983</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Occupation </span>: Web Designer</p>
+                      <p><span>Occupation</span>:       Web Designer</p>
                   </div>
                   <div class="bio-row">
                       <p><span>Email </span>: {user.email}</p>
@@ -56,13 +59,7 @@ export default function Profile(props) {
                   </div>
                   <div class="bio-row">
                       <p><span>Account ID</span>: Oxc4c16a645_b21a</p>
-                  </div>
-                  <div class="bio-row">
-                      <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitches"/>
-                        <label class="custom-control-label" for="customSwitches">   Notifications</label>
                         <img className="userCards" src="./usercards.png" alt="userCards" style={{height: 200}}/>
-                      </div>
                   </div>
               </div>
           </div>

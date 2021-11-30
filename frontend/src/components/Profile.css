@@ -25,6 +25,10 @@ body {
   background-color: white
 }
 
+.date {
+  background-color: #ccc
+}
+
 .card:hover .profile-image img {
   transform: scale(1.5)
 }
@@ -74,11 +78,6 @@ hr .new1 {
   border: 1px solid
 }
 
-.join {
-  font-size: 14px;
-  color: #0d0c3e;
-  font-weight: bold
-}
 .userCards {
   height: 150px;
   width: auto;
@@ -86,9 +85,6 @@ hr .new1 {
   margin-right: 30px;
 }
 
-.date {
-  background-color: #ccc
-}
 .bio-graph-heading {
   margin-top: 20px;
   background: white;
@@ -114,16 +110,17 @@ hr .new1 {
   width: 50%;
   float: left;
   margin-bottom: 10px;
-  font-size: 19px
+  font-size: 19px;
 }
 
 .bio-row p span {
   width: 100px;
   display: inline-block;
+  padding-left: 10px;
 }
 
 .panel-body {
    border: 1px solid;
   border-color: #89817e;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
